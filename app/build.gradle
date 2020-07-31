@@ -34,7 +34,7 @@ dependencies {
     // TODO Add dependencies for lifecycle extensions
     // TODO If applicable, add dependencies for navigation framework
     // TODO Add dependencies for material design
-    // TODO Add google play services authentication
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
     // TODO Add rxJava2 dependencies
     // TODO If consuming JSON based webservice, add Gson dependency
     // TODO If consuming a webservice of any type, add retrofit dependency
