@@ -1,62 +1,73 @@
 package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
+import edu.cnm.deepdive.mealornomeal.view.CreatedMealsAdapter;
+//import edu.cnm.deepdive.mealornomeal.viewmodel.CreatedMealsViewModel;
 
-/**
- * A simple {@link Fragment} subclass. Use the {@link CreatedMealsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CreatedMealsFragment extends Fragment {
 
-  // TODO: Rename parameter arguments, choose names that match
-  // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-  private static final String ARG_PARAM1 = "param1";
-  private static final String ARG_PARAM2 = "param2";
+private RecyclerView createdMealList;
+//private CreatedMealsViewModel createdMealsViewModel;
 
-  // TODO: Rename and change types of parameters
-  private String mParam1;
-  private String mParam2;
 
-  public CreatedMealsFragment() {
-    // Required empty public constructor
-  }
+//  @Override
+//  public void onCreate(Bundle savedInstanceState) {
+//    super.onCreate(savedInstanceState);
+//    if (getArguments() != null) {
+//      mParam1 = getArguments().getString(ARG_PARAM1);
+//      mParam2 = getArguments().getString(ARG_PARAM2);
+//    }
+//  }
 
-  /**
-   * Use this factory method to create a new instance of this fragment using the provided
-   * parameters.
-   *
-   * @param param1 Parameter 1.
-   * @param param2 Parameter 2.
-   * @return A new instance of fragment CreatedMeals.
-   */
-  // TODO: Rename and change types and number of parameters
-  public static CreatedMealsFragment newInstance(String param1, String param2) {
-    CreatedMealsFragment fragment = new CreatedMealsFragment();
-    Bundle args = new Bundle();
-    args.putString(ARG_PARAM1, param1);
-    args.putString(ARG_PARAM2, param2);
-    fragment.setArguments(args);
-    return fragment;
-  }
+//  @Override
+//  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//      Bundle savedInstanceState) {
+//    View view = inflater.inflate(R.layout.fragment_created_meals, container, false);
+//    createdMealList = view.findViewById(R.id.created_meals_recycler_view);
+//    view.findViewById(R.id.back_button).setOnClickListener((v) -> navMyMeals());
+//    view.findViewById(R.id.home_button).setOnClickListener((v) -> navHome());
+//    return view;
+//  }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    if (getArguments() != null) {
-      mParam1 = getArguments().getString(ARG_PARAM1);
-      mParam2 = getArguments().getString(ARG_PARAM2);
-    }
-  }
+//
+//  @Override
+//  public void onViewCreated(@NonNull View view,
+//      @Nullable Bundle savedInstanceState) {
+//    super.onViewCreated(view, savedInstanceState);
+//    createdMealsViewModel = new ViewModelProvider(getActivity())
+//        .get(CreatedMealsViewModel.class);
+//    createdMealsViewModel.getMeals().observe(getViewLifecycleOwner(), (meals) -> {
+//      if (meals != null) {
+//        createdMealList.setAdapter(new CreatedMealsAdapter(getContext(), meals,
+//            (meal) -> scheduleMeal(meal.getId()),
+//            (meal) -> createdMealsViewModel.deleteMeal(meal)));
+//      }
+//    });
+//  }
 
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_created_meals, container, false);
-  }
+//  private void scheduleMeal(long id) {
+//    EditMeal action = CreatedMealsFragmentDirections.editMeal();
+//    action.setMealId(id);
+//    Navigation.findNavController(getView()).navigate(action);
+//  }
+//
+//  private void navHome() {
+//    NavDirections action = CreatedMealsFragmentDirections.returnHome();
+//    Navigation.findNavController(getView()).navigate(action);
+//  }
+//
+//  private void navMyMeals() {
+//    NavDirections action = CreatedMealsFragmentDirections.toMyMeals();
+//    Navigation.findNavController(getView()).navigate(action);
+//  }
+
 }
