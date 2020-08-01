@@ -1,101 +1,76 @@
 package edu.cnm.deepdive.mealornomeal.view;
 
-import android.media.Image;
-import android.os.Bundle;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
-import edu.cnm.deepdive.mealornomeal.viewmodel.ListViewModel;
+import edu.cnm.deepdive.mealornomeal.model.Ingredient;
+import edu.cnm.deepdive.mealornomeal.model.Meal;
+import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter.Holder;
+import java.util.List;
 
-public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.IngredientViewHolder> {
+public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
 
   private final Context context;
   private final List<Ingredient> ingredients;
-  private final OnItemSelectedHelper onItemSelectedHelper;
+  private final OnIngredientClickListener listener;
 
-  public IngredientListAdapter(Context context, List<Ingredient> ingredients,
-      OnItemSelectedHelper onItemSelectedHelper) {
-    super();
+  public IngredientListAdapter(Context context, List<Ingredient> ingredients, OnIngredientClickListener listener) {
     this.context = context;
     this.ingredients = ingredients;
-    this.onItemSelectedHelper = onItemSelectedHelper;
+    this.listener = listener;
   }
 
   @NonNull
   @Override
-  public IngredientListAdapter.IngredientViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
-      int viewType) {
-    View view = LayoutInflater.from(context).
-        inflate(R.layout.item_ingredient_search, parent, false);
-    return new IngredientViewHolder(view);
+  public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    View root = LayoutInflater.from(context).inflate(R.layout.item_ingredient, parent, false);
+    return new Holder(root);
   }
 
   @Override
-  public void onBindViewHolder(@NonNull IngredientListAdapter.IngredientViewHolder holder, int position) {
-    holder.bind(position);
+  public void onBindViewHolder(@NonNull Holder holder, int position) {
+    holder.bind(position, ingredients.get(position));
   }
 
   @Override
   public int getItemCount() {
-
     return ingredients.size();
   }
 
-  class IngredientViewHolder extends RecyclerView.ViewHolder implements OnItemSelectedListener{
+  @FunctionalInterface
+  public interface OnIngredientClickListener {
 
-    private final TextView title;
-    private final TextView description;
-    private final Spinner imageSpinner;
-    private Ingredient ingredient;
+    void onIngredientClick(int position, Ingredient ingredient);
 
-    private final List<Image> withIconList = new ArrayList<>();
-    private final String imageUrl = "" + R.drawable.ingredient;
-    private final Image ingredientIcon = new Image(imageUrl);
-
-    public IngredientViewHolder(@NonNull View itemView) {
-      super(itemView);
-      title = itemView.findViewById(R.id.ingredient_title);
-      description = itemView.findViewById(R.id.ingredient_description);
-      imageSpinner = itemView.findViewById(R.id.ingredient_search_spinner);
-    }
-
-
-    private void bind(int position) {
-      ingredient = ingredients.get(position);
-      withIconList.clear();
-      withIconList.add(ingredientIcon);
-      withIconList.addAll(ingredient.getImages());
-      title.setText(ingredients.get(position).getTitle());
-      description.setText(ingredients.get(position).getDescription());
-      IngredientImageAdapter ingredientImageAdapter = new IngredientImageAdapter(context,
-          withIconList);
-      imageSpinner.setAdapter(ingredientImageAdapter);
-      imageSpinner.setOnItemSelectedListener(this);
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-      if(position > 0) {
-        onItemSelectedHelper.onSelected(ingredient, ingredient.getImages().get(position - 1));
-        adapterView.setSelection(0);
-      }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
   }
 
-  public interface OnItemSelectedHelper {
-    void onSelected(Ingredient ingredient, Image image);
+  class Holder extends RecyclerView.ViewHolder {
+
+    private final TextView ingredientText;
+    private final TextView ingredientMeal;
+
+    private Holder(View root) {
+      super(root);
+      ingredientText = root.findViewById(R.id.ingredient);
+    }
+
+    private void bind(int position, Ingredient ingredient) {
+      ingredientText.setText(context.getString(R.string.ingredient_format, ingredient.getName()));
+      Meal meal = ingredient.getName();
+      String name = (meal != null) ? meal.getName() : null;
+      String attribution = (name != null)
+          ? context.getString(R.string.attribution_format, name)
+          : context.getString(R.string.unattributed_meal);
+      ingredientMeal.setText(attribution);
+      itemView.setOnClickListener((v) -> listener.onIngredientClick(getAdapterPosition(), ingredient));
+      itemView.setTag(ingredient);
+    }
+
   }
 
 }
