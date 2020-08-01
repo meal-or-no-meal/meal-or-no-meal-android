@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.mealornomeal.controller.ui;
 
+import android.widget.EditText;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -12,16 +13,45 @@ import edu.cnm.deepdive.mealornomeal.R;
 
 public class MealDetailFragment extends Fragment {
 
+private static final String ID_KEY = "meal_id";
 
 
-  public static MealDetailFragment newInstance() {
-    return new MealDetailFragment();
+  private EditText prepTime;
+  private EditText mealName;
+  private EditText ingredients;
+  private EditText recipe;
+  private EditText equipment;
+  private long mealId;
+  private Meal meal;
+  private MealDetailViewModel mealDetailViewModel;
+
+
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
   }
 
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_meal_detail, container, false);
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View view = inflater.inflate(R.layout.fragment_meal_detail, container, false);
+    prepTime = view.findViewById(R.id.prep_time);
+    mealName = view.findViewById(R.id.meal_name);
+    ingredients = view.findViewById(R.id.ingredients);
+    recipe = view.findViewById(R.id.recipe);
+    equipment = view.findViewById(R.id.equipment_needed);
+
+    view.findViewById(R.id.save_details).setOnClickListener((v) -> {
+      meal.setName(mealName.getText().toString().trim());
+      String prepTimeText = prepTime.getText().toString().trim();
+      meal.setPrep(prepTimeText.isEmpty() ? 0 : Integer.parseInt(prepTimeText));
+      meal.setIngredients(ingredients.getText().toString().trim());
+      meal.setEquipment(equipment.getText().toString().trim());
+      meal.setRecipe(recipe.getText().toString().trim());
+      mealDetailViewModel.saveMeal(meal);
+      //TODO add navigation back to meal list
+    });
+    return view;
   }
 
   @Override
