@@ -31,15 +31,30 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    // TODO Add dependencies for lifecycle extensions
-    // TODO If applicable, add dependencies for navigation framework
-    // TODO Add dependencies for material design
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
     // TODO Add google play services authentication
-    // TODO Add rxJava2 dependencies
-    // TODO If consuming JSON based webservice, add Gson dependency
-    // TODO If consuming a webservice of any type, add retrofit dependency
-    // TODO If using local database, add Room dependencies
-    // TODO Add Stetho dependency
+    // ReactiveX dependencies
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+// Retrofit dependencies
+    def retrofit_version = "2.6.2"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    // Room and SQLite dependencies
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    // Stetho (inspection) dependency
+    implementation 'com.facebook.stetho:stetho:1.5.1'
     // TODO If loading images over the web, add Picasso dependency
     // TODO If doing any kind of database preload on local system - add the appropriate deserializer
     // TODO For licensing - Add Google play services OSS License dependency
