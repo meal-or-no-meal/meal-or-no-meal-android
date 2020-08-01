@@ -18,7 +18,7 @@ public class CreatedMealsFragment extends Fragment {
 private RecyclerView createdMealList;
 //private CreatedMealsViewModel createdMealsViewModel;
 
-
+//
 //  @Override
 //  public void onCreate(Bundle savedInstanceState) {
 //    super.onCreate(savedInstanceState);
