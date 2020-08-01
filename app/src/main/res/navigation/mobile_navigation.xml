@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/mobile_navigation.xml"
+  app:startDestination="@id/navigation_calendar">
+
+  <fragment
+    android:id="@+id/navigation_home"
+    android:label="Home"
+    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.HomeFragment"
+    tools:layout="@layout/fragment_home"/>
+
+  <fragment
+    android:id="@+id/navigation_calendar"
+    android:label="@string/title_calendar"
+    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.CalendarFragment"
+    tools:layout="@layout/fragment_calendar"/>
+
+  <fragment
+    android:id="@+id/navigation_meals"
+    android:label="@string/title_meals"
+    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.CreatedMealsFragment"
+    tools:layout="@layout/fragment_created_meals"/>
+
+  <fragment
+    android:id="@+id/navigation_shopping_list"
+    android:label="@string/title_shopping_list"
+    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.ListFragment"/>
+
+<!--  <fragment
+    android:id="@+id/navigation_ingredients"
+    android:label="Ingredients"
+    android:name="Mea"-->
+
+</navigation>

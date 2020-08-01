@@ -7,6 +7,7 @@
   android:layout_height="match_parent"
   tools:context=".controller.ui.HomeFragment">
 
+<!--
   <androidx.appcompat.widget.Toolbar
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
@@ -17,6 +18,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
+-->
 
   <TextView
     android:id="@+id/meals_or_no_meal"
@@ -44,7 +46,7 @@
         app:layout_constraintGuide_percent="0.5"/>
 
 <Button
-    android:id="@+id/calendar_month"
+    android:id="@+id/calendar"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.mealornomeal;
+package edu.cnm.deepdive.mealornomeal.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import edu.cnm.deepdive.mealornomeal.LoginActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 
@@ -19,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    setupNavigation();
     setupObservers();
+
   }
 
 
@@ -44,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
     return handled;
   }
 
+  private void setupNavigation() {
+    BottomNavigationView navView = findViewById(R.id.nav_view);
+    NavController navController = Navigation.findNavController(R.id.nav_host_fragment);
+    AppBarConfiguration config = new AppBarConfiguration.Builder(
+        R.id.navigation_calendar, R.id.navigation_meals, R.id.navigation_shopping_list
+    )
+        .build();
+    NavigationUI.setupActionBarWithNavController(this, navController, config);
+    NavigationUI.setupWithNavController(navView, navController);
+  }
   private void setupObservers() {
     signInService = GoogleSignInService.getInstance();
     signInService.getAccount().observe(this, (account) -> {

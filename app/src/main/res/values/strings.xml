@@ -9,4 +9,7 @@
   <string name="login_failure">Unable to sign in with credentials</string>
   <string name="sign_out">Sign out</string>
   <string name="meal_or_no_meal"><![CDATA[Meal or no Meal]]></string>
+  <string name="title_calendar">Calendar</string>
+  <string name="title_meals">Meals</string>
+  <string name="title_shopping_list">Shopping List</string>
 </resources>
