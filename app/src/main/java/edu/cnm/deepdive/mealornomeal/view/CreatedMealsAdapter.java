@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.view.CreatedMealsAdapter.Holder;
-import java.util.List;
 
 public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
 
@@ -63,7 +62,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
    public Holder(@NonNull View createdMealsView) {
       super(createdMealsView);
       this.createdMealsView = createdMealsView;
-      mealName = createdMealsView.findViewById(R.id.created_meal_name);
+      mealName = createdMealsView.findViewById(R.id.meal_name);
       prepTime = createdMealsView.findViewById(R.id.prep_time);
       edit = createdMealsView.findViewById(R.id.edit);
       delete = createdMealsView.findViewById(R.id.delete);

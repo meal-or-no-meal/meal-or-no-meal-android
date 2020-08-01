@@ -6,4 +6,17 @@
   <string name="back">BACK</string>
   <string name="home">HOME</string>
   <string name="prep_time">Prep Min:</string>
+  <string name="meal_name">MEAL NAME</string>
+  <string name="ingredients_title">
+    <u>INGREDIENTS</u>
+  </string>
+  <string name="instructions">
+    <u>INSTRUCTIONS</u>
+  </string>
+  <string name="equipment_needed">
+    <u>WHAT YOU NEED</u>
+  </string>
+  <string name="ingredients_placeholder">SOME INGREDIENTS</string>
+  <string name="recipe_placeholder">COOK THE DAMN THANG</string>
+  <string name="equipment_placeholder">FIREPROOF TOOLS</string>
 </resources>

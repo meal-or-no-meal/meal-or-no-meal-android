@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".controller.ui.CreatedMealsFragment">
+
+  <EditText
+    android:id="@+id/meal_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="8dp"
+    android:textSize="30sp"
+    android:textAlignment="center"
+    android:text="@string/meal_name"/>
+
+  <TextView
+    android:id="@+id/prep_time_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="@id/meal_name"
+    app:layout_constraintTop_toBottomOf="@id/meal_name"
+    android:layout_marginTop="4dp"
+    android:text="@string/prep_time"
+    android:textSize="25sp"/>
+
+  <EditText
+    android:id="@+id/prep_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="@id/prep_time_title"
+    app:layout_constraintBottom_toBottomOf="@id/prep_time_title"
+    app:layout_constraintStart_toEndOf="@id/prep_time_title"
+    android:text="120"
+    android:textSize="25sp"/>
+
+  <Button
+    android:id="@+id/save_details"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/meal_name"
+    android:text="SAVE"
+    android:textSize="20sp"/>
+
+  <ScrollView
+    android:id="@+id/meal_detail_scroller"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/save_details"
+    app:layout_constraintBottom_toTopOf="@id/back_button"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+<TextView
+  android:id="@+id/ingredients_title"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginTop="8dp"
+  android:textAlignment="center"
+  android:textSize="25sp"
+  android:text="@string/ingredients_title"/>
+
+    <EditText
+      android:id="@+id/ingredients"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="4dp"
+      android:hint="@string/ingredients_placeholder"
+      android:textSize="20sp"/>
+
+      <TextView
+        android:id="@+id/instructions_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:text="@string/instructions"/>
+
+      <EditText
+        android:id="@+id/recipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:hint="@string/recipe_placeholder"
+        android:textSize="20sp"/>
+
+      <TextView
+        android:id="@+id/equipment_needed_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:text="@string/equipment_needed"/>
+
+      <EditText
+        android:id="@+id/equipment_needed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:hint="@string/equipment_placeholder"
+        android:textSize="20sp"/>
+    </LinearLayout>
+  </ScrollView>
+
+  <Button
+    android:id="@+id/back_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_margin="8dp"
+    android:textSize="25sp"
+    android:text="@string/back"/>
+
+  <Button
+    android:id="@+id/home_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_margin="8dp"
+    android:textSize="25sp"
+    android:text="@string/home"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

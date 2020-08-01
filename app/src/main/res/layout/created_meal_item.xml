@@ -4,10 +4,11 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:layout_margin="4dp"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
 
   <TextView
-    android:id="@+id/created_meal_name"
+    android:id="@+id/meal_name"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
@@ -15,7 +16,7 @@
     android:layout_marginStart="4dp"
     android:layout_marginTop="10dp"
     android:textSize="25sp"
-    android:text="MEAL NAME"/>
+    android:text="@string/meal_name"/>
 
   <TextView
     android:id="@+id/prep_time_title"
@@ -23,7 +24,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="top"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toEndOf="@id/created_meal_name"
+    app:layout_constraintStart_toEndOf="@id/meal_name"
     android:text="@string/prep_time"/>
 
   <TextView
