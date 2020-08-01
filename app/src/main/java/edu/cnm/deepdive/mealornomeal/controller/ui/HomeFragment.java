@@ -1,10 +1,11 @@
-package edu.cnm.deepdive.mealornomeal;
+package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import edu.cnm.deepdive.mealornomeal.R;
 
 
 public class HomeFragment extends Fragment {

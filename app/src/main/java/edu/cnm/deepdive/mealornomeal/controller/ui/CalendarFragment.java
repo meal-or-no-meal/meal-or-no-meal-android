@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.mealornomeal;
+package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
