@@ -7,6 +7,28 @@
   android:layout_height="match_parent"
   tools:context=".controller.ui.HomeFragment">
 
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background=""
+    android:minHeight="?attr/actionBarSize"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <TextView
+    android:id="@+id/meals_or_no_meal"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="10dp"
+    android:textSize="25sp"
+    android:text="@string/meal_or_no_meal"/>
+
 <androidx.constraintlayout.widget.Guideline
     android:id="@+id/horizontal_guideline"
   android:layout_width="wrap_content"
@@ -25,10 +47,10 @@
     android:id="@+id/calendar_month"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="@id/calendar_layout"
-    app:layout_constraintEnd_toEndOf="pa"
-    app:layout_constraintTop_toBottomOf="@id/ingredient"
-    app:layout_constraintBottom_tof="@"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/vertical_guideline"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline"
     android:text="@string/calendar"/>
 
   <Button
@@ -37,11 +59,9 @@
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="@id/vertical_guideline"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="@id/horizontal_guideline"
-    app:layout_constraintBottom_toTopOf="@id/meals"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline"
     android:text="@string/ingredients"/>
-
-
 
   <Button
     android:id="@+id/shopping_list"
@@ -52,7 +72,6 @@
     app:layout_constraintTop_toBottomOf="parent"
     app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline"
     android:text="@string/ingredients"/>
-
 
   <Button
     android:id="@+id/meals"
