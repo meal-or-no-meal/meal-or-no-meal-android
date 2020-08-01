@@ -22,7 +22,6 @@ public class GoogleSignInService {
   private final MutableLiveData<GoogleSignInAccount> account;
   private final MutableLiveData<Throwable> throwable;
 
-
   private GoogleSignInService() {
     account = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
