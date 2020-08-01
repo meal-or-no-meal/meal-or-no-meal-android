@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+def getLocalProperty(propertyName) {
+    Properties properties = new Properties();
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    return properties.getProperty(propertyName);
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -12,6 +18,9 @@ android {
         versionName "1.0"
         //TODO If using Room - add JavaCompile options for schema location
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "CLIENT_ID", "\"\"" // TODO Get this from Google Cloud Console
+        buildConfigField "String", "BASE_URL", String.format("\"%s\"", getLocalProperty("base_url"))
     }
 
     buildTypes {
@@ -39,20 +48,27 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     // TODO Add google play services authentication
+
     // ReactiveX dependencies
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+
 // Retrofit dependencies
     def retrofit_version = "2.6.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    // Retrofit (HTTP client) dependencies
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
+
     // Room and SQLite dependencies
     def room_version = "2.2.5"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
+
     // Stetho (inspection) dependency
     implementation 'com.facebook.stetho:stetho:1.5.1'
     // TODO If loading images over the web, add Picasso dependency
