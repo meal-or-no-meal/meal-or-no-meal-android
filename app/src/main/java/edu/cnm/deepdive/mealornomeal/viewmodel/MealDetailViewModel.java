@@ -6,54 +6,57 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import edu.cnm.deepdive.mealornomeal.model.Meal;
+import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
+import edu.cnm.deepdive.mealornomeal.service.MealRepository;
 import io.reactivex.disposables.CompositeDisposable;
+import java.util.HashMap;
+import java.util.Map;
 
-//public class MealDetailViewModel extends AndroidViewModel {
+public class MealDetailViewModel extends AndroidViewModel {
 
-//  private final MealRepository mealRepository;
-//  private final MutableLiveData<Meal> meal;
-//  private final MutableLiveData<Throwable> throwable;
-//  private final CompositeDisposable pending;
-//
-//
-//  public MealDetailViewModel(@NonNull Application application) {
-//    super(application);
-//    mealRepository = new MealRepository(application);
-//    throwable = new MutableLiveData<>();
-//    pending = new CompositeDisposable();
-//    meal = new MutableLiveData<>();
-//  }
-//
-//  public LiveData<Meal> getMeal() {return meal;}
-//
-//  public LiveData<Throwable> getThrowavle() {
-//    return throwable;
-//  }
-//
-//  public void setMealId(long id) {
-//    throwable.setValue(null);
-//    pending.add(
-//        mealRepository.get(id)
-//            .subscribe(
-//                (alarm) -> this.meal.postValue(meal),
-//                (throwable) -> this.throwable.postValue(throwable)
-//            )
-//    );
-//  }
-//
-//
-//  public void saveMeal(Meal meal) {
-//    throwable.setValue(null);
-//    pending.add(
-//        mealRepository.save(meal)
-//            .subscribe(
-//                () -> {
-//                  Log.d(getClass().getName(), "Save Completed");
-//                },
-//                (throwable) -> this.throwable.postValue(throwable.getCause())
-//            ));
-//  }
+  private final MealRepository mealRepository;
+  private final MutableLiveData<Meal> meal;
+  private final MutableLiveData<Throwable> throwable;
+  private final CompositeDisposable pending;
+  private final Map<Long, Meal> mealMap;
 
 
+  public MealDetailViewModel(@NonNull Application application) {
+    super(application);
+    mealRepository = new MealRepository();
+    throwable = new MutableLiveData<>();
+    pending = new CompositeDisposable();
+    meal = new MutableLiveData<>();
+    mealMap = new HashMap<>();
+  }
 
-//}
+  public LiveData<Meal> getMeal() {return meal;}
+
+  public LiveData<Throwable> getThrowable() {
+    return throwable;
+  }
+
+
+  public void saveMeal(Meal meal) {
+    throwable.setValue(null);
+    GoogleSignInService.getInstance().refresh()
+        .addOnSuccessListener((account) -> {
+          pending.add(
+              mealRepository.save(account.getIdToken(), meal)
+                  .subscribe(
+                      () -> {
+                        this.meal.postValue(null);
+                      },
+                      throwable::postValue
+                  )
+          );
+        })
+        .addOnFailureListener(throwable::postValue);
+  }
+
+  public void setMealId(long id) {
+    meal.setValue(mealMap.get(id));
+  }
+
+}

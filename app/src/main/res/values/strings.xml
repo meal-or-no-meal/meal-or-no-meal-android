@@ -12,4 +12,14 @@
   <string name="title_calendar">Calendar</string>
   <string name="title_meals">Meals</string>
   <string name="title_shopping_list">Shopping List</string>
+  <string name="my_meals">MY MEALS</string>
+  <string name="meal_name">MEAL NAME</string>
+  <string name="prep_time">Prep Min:</string>
+  <string name="ingredients_title">INGREDIENTS</string>
+  <string name="ingredients_placeholder">SOME EDIBLE STUFF</string>
+  <string name="instructions">INSTRUCTIONS</string>
+  <string name="recipe_placeholder">MAKE THE EDIBLE STUFF HOT IN ALL SORTS OF DIFFERENT WAYS!</string>
+  <string name="equipment_needed">WHAT YOU NEED</string>
+  <string name="equipment_placeholder">SHARP THINGS AND FLAT THINGS THAT DON\'T BURN OR MELT WHEN YOU PUT THEM IN FIRE</string>
+  <string name="save">SAVE</string>
 </resources>

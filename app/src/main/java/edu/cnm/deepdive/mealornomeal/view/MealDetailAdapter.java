@@ -8,6 +8,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
+import edu.cnm.deepdive.mealornomeal.model.Meal;
 import java.util.List;
 
 public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Holder> {
@@ -32,7 +33,7 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
   public Holder onCreateViewHolder(@NonNull ViewGroup parent,
       int viewType) {
     View view = LayoutInflater.from(context).inflate(R.layout.fragment_meal_detail, parent, false);
-    return new Holder(view, prepTime);
+    return new Holder(view);
   }
 
   @Override
@@ -71,10 +72,10 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
       String name =
           (meal.getName() != null) ? meal.getName() : unnamedMeal;
       mealName.setText(meal.getName());
-      prepTime.setText(Integer.parseInt(meal.getPrepTime()));
-      ingredients.setText(meal.getIngredients());
+      prepTime.setText(Integer.parseInt(meal.getPrepTime().toString()));
+//      ingredients.setText(meal.getIngredients()); //TODO connect this to ingredients
       recipe.setText(meal.getInstruction());
-      equipment.setText(meal.getEquipment());
+      equipment.setText(meal.getRequirements());
       mealDetailView.setOnClickListener((v) -> clickListener.OnClick(v, getAdapterPosition(), meal));
     }
 

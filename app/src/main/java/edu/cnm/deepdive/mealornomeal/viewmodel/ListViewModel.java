@@ -6,6 +6,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import edu.cnm.deepdive.mealornomeal.model.Ingredient;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+import java.util.List;
 
 public class ListViewModel extends AndroidViewModel implements LifecycleObserver {
 
@@ -19,7 +23,7 @@ public class ListViewModel extends AndroidViewModel implements LifecycleObserver
     throwable = new MutableLiveData<Throwable>();
  //   imgurService = ImgurService.getInstance();
     pending = new CompositeDisposable();
-    loadData();
+ //   loadData();
   }
 
   public LiveData<List<Ingredient>> getIngredients() {
@@ -30,24 +34,24 @@ public class ListViewModel extends AndroidViewModel implements LifecycleObserver
     return throwable;
   }
 
-  public void loadData() {
-    pending.add(
-      //  imgurService.getSearchResult(BuildConfig.CLIENT_ID,
-        //    "Cars")
-            .subscribeOn(Schedulers.io())
-            .map((result) -> {
-              List<Ingredient> ingredients = result.getData();
-              ingredients.removeIf((gallery) ->
-                  gallery.getImages() == null ||
-                      gallery.getImages().isEmpty());
-              return ingredients;
-            })
-            .subscribe(
-                value -> ListViewModel.this.ingredients.postValue(value),
-                throwable -> this.throwable.postValue(throwable.getCause())
-            )
-    );
-  }
+//  public void loadData() {
+//    pending.add(
+//      //  imgurService.getSearchResult(BuildConfig.CLIENT_ID,
+//        //    "Cars")
+//            .subscribeOn(Schedulers.io())
+//            .map((result) -> {
+//              List<Ingredient> ingredients = result.getData();
+//              ingredients.removeIf((gallery) ->
+//                  gallery.getImages() == null ||
+//                      gallery.getImages().isEmpty());
+//              return ingredients;
+//            })
+//            .subscribe(
+//                value -> ListViewModel.this.ingredients.postValue(value),
+//                throwable -> this.throwable.postValue(throwable.getCause())
+//            )
+//    );
+//  }
 
   @Override
   protected void onCleared() {

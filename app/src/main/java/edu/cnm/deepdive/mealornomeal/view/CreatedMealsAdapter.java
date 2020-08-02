@@ -8,25 +8,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
+import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.view.CreatedMealsAdapter.Holder;
+import java.util.List;
 
 public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
 
   private final String unnamedMeal;
   private final Context context;
- // private final List<Meal> meals;
+  private final List<Meal> meals;
   private final OnEditListener onEditListener;
   private final OnDeleteListener onDeleteListener;
-  private final OnScheduleListener onScheduleListener;
+//  private final OnScheduleListener onScheduleListener;
 
   public CreatedMealsAdapter(Context context,
-      OnEditListener onEditListener,
+      List<Meal> meals, OnEditListener onEditListener,
       OnDeleteListener onDeleteListener,
       OnScheduleListener onScheduleListener) {
     this.context = context;
+    this.meals = meals;
     this.onEditListener = onEditListener;
     this.onDeleteListener = onDeleteListener;
-    this.onScheduleListener = onScheduleListener;
+//    this.onScheduleListener = onScheduleListener;
     unnamedMeal = "Mystery Meal";
   }
 
@@ -40,13 +43,12 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
   @Override
   public void onBindViewHolder(
       @NonNull Holder holder, int position) {
-//    holder.bind(position);
+    holder.bind(position);
   }
 
   @Override
   public int getItemCount() {
- //   return meals.size();
-    return 0;
+    return meals.size();
   }
 
   class Holder extends RecyclerView.ViewHolder {
@@ -59,7 +61,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
     private final View scheduleMeal;
 
 
-   public Holder(@NonNull View createdMealsView) {
+    public Holder(@NonNull View createdMealsView) {
       super(createdMealsView);
       this.createdMealsView = createdMealsView;
       mealName = createdMealsView.findViewById(R.id.meal_name);
@@ -69,32 +71,32 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
       scheduleMeal = createdMealsView.findViewById(R.id.schedule_meal);
     }
 
-//    private void bind(int position) {
-//     Meal meal = meals.get(position);
-//      String name =
-//          (meal.getName() != null) ? meal.getName() : unnamedMeal;
-//      mealName.setText(meal.getName());
-//      prepTime.setText(meal.getPrepTime());
-//      edit.setOnClickListener((v) -> onEditListener.onEdit(meal));
-//      delete.setOnClickListener((v) -> onDeleteListener.onDelete(meal));
+    private void bind(int position) {
+      Meal meal = meals.get(position);
+      String name =
+          (meal.getName() != null) ? meal.getName() : unnamedMeal;
+      mealName.setText(meal.getName());
+      prepTime.setText(meal.getPrepTime());
+      edit.setOnClickListener((v) -> onEditListener.onEdit(meal));
+      delete.setOnClickListener((v) -> onDeleteListener.onDelete(meal));
 //      scheduleMeal.setOnClickListener((v) -> onScheduleListener.onSchedule(meal));
-//    }
+    }
 
   }
 
   public interface OnEditListener {
 
-//    void onEdit(Meal meal);
+    void onEdit(Meal meal);
   }
 
   public interface OnDeleteListener {
 
-//    void onDelete(Meal meal);
+    void onDelete(Meal meal);
   }
 
   public interface OnScheduleListener {
 
-//    void onSchedule(Meal meal);
+    void onSchedule(Meal meal);
   }
 
 }

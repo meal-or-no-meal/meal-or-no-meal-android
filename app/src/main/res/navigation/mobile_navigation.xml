@@ -21,12 +21,35 @@
     android:id="@+id/navigation_meals"
     android:label="@string/title_meals"
     android:name="edu.cnm.deepdive.mealornomeal.controller.ui.CreatedMealsFragment"
-    tools:layout="@layout/fragment_created_meals"/>
+    tools:layout="@layout/fragment_created_meals">
+    <action
+      android:id="@+id/meals_to_details"
+      app:destination="@id/navigation_meal_details">
+      <argument
+        android:name="mealId"
+        app:argType="long"
+        android:defaultValue="0L"/>
+    </action>
+  </fragment>
 
   <fragment
     android:id="@+id/navigation_shopping_list"
     android:label="@string/title_shopping_list"
     android:name="edu.cnm.deepdive.mealornomeal.controller.ui.ListFragment"/>
+
+  <fragment
+    android:id="@+id/navigation_meal_details"
+    android:label="Meal Details"
+    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.MealDetailFragment"
+    tools:layout="@layout/fragment_meal_detail">
+    <argument
+      android:name="mealId"
+      app:argType="long"
+      android:defaultValue="0L"/>
+    <action
+      android:id="@+id/details_to_meals"
+      app:destination="@id/navigation_meals"/>
+  </fragment>
 
 <!--  <fragment
     android:id="@+id/navigation_ingredients"

@@ -46,7 +46,7 @@
     android:layout_height="wrap_content"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/meal_name"
-    android:text="SAVE"
+    android:text="@string/save"
     android:textSize="20sp"/>
 
   <ScrollView
@@ -55,8 +55,8 @@
     android:layout_height="0dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@id/save_details"
-    app:layout_constraintBottom_toTopOf="@id/back_button"
     android:orientation="vertical">
 
     <LinearLayout
@@ -117,24 +117,5 @@
     </LinearLayout>
   </ScrollView>
 
-  <Button
-    android:id="@+id/back_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    android:layout_margin="8dp"
-    android:textSize="25sp"
-    android:text="@string/back"/>
-
-  <Button
-    android:id="@+id/home_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_margin="8dp"
-    android:textSize="25sp"
-    android:text="@string/home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

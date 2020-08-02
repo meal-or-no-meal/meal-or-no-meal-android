@@ -18,20 +18,27 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface BackEndService {
 
   @GET("meals")
-  Single<List<Meal>> get(@Header("Authorization") String authHeader);
+  Single<List<Meal>> getAllMeals(@Header("Authorization") String authHeader);
+
+  @GET("meals/{id}")
+  Single<Meal> getMeal(@Header("Authorization") String authHeader);
 
   @POST("meals")
-  Single<Meal> post(@Header("Authorization") String authHeader, @Body Meal meal);
+  Single<Meal> postMeal(@Header("Authorization") String authHeader, @Body Meal meal);
+
+  @PUT("meals/{id}")
+  Single<Meal> putMeal(@Header("Authorization") String authHeader, @Body Meal meal, @Path("id") long id);
 
   @DELETE("meals/{id}")
   Completable delete(@Header("Authorization") String authHeader, @Path("id") long id);
 
-  public static BackEndService getInstance() {
+  static BackEndService getInstance() {
     return InstanceHolder.INSTANCE;
   }
 

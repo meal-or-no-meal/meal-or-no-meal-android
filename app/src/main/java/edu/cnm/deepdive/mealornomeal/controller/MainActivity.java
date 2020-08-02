@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
   private void setupNavigation() {
     BottomNavigationView navView = findViewById(R.id.nav_view);
-    NavController navController = Navigation.findNavController(R.id.nav_host_fragment);
+    NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     AppBarConfiguration config = new AppBarConfiguration.Builder(
-        R.id.navigation_calendar, R.id.navigation_meals, R.id.navigation_shopping_list
+        R.id.navigation_calendar, R.id.navigation_meals, R.id.navigation_shopping_list, R.id.navigation_meal_details
     )
         .build();
     NavigationUI.setupActionBarWithNavController(this, navController, config);

@@ -29,16 +29,16 @@ public class CalendarFragment extends Fragment {
 
   }
 
-  @NonNull
-  @Override
-  public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-    View view = LayoutInflater.from()
-        .inflate(R.layout.fragment_calendar, null, false);
-    TextView breakfastSlot = view.findViewById(R.id.breakfast);
-    TextView lunchSlot = view.findViewById(R.id.lunch);
-    TextView dinnerSlot = view.findViewById(R.id.dinner);
-
-  }
+//  @NonNull
+//  @Override
+//  public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+//    View view = LayoutInflater.from()
+//        .inflate(R.layout.fragment_calendar, null, false);
+//    TextView breakfastSlot = view.findViewById(R.id.breakfast);
+//    TextView lunchSlot = view.findViewById(R.id.lunch);
+//    TextView dinnerSlot = view.findViewById(R.id.dinner);
+//
+//  }
 
 
 }
