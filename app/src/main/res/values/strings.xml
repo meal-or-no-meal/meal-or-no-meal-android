@@ -22,4 +22,5 @@
   <string name="equipment_needed">WHAT YOU NEED</string>
   <string name="equipment_placeholder">SHARP THINGS AND FLAT THINGS THAT DON\'T BURN OR MELT WHEN YOU PUT THEM IN FIRE</string>
   <string name="save">SAVE</string>
+  <string name="title_activity_login">login</string>
 </resources>
