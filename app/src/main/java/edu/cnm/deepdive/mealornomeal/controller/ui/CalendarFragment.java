@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.viewmodel.MealDetailViewModel;
-import org.jetbrains.annotations.NotNull;
+
 
 
 public class CalendarFragment extends DialogFragment {
@@ -50,7 +49,8 @@ public class CalendarFragment extends DialogFragment {
         .setTitle("Meals")
         .setView(view)
         .setPositiveButton(android.R.string.ok, (dlg, which) -> save())
-        .setNegativeButton(android.R.string.cancel, (dlg, which) -> {})
+        .setNegativeButton(android.R.string.cancel, (dlg, which) -> {
+        })
         .create();
 
     return alertDialog;
@@ -67,8 +67,24 @@ public class CalendarFragment extends DialogFragment {
   }
 
   private void save() {
-
+//    .setText(quoteText.getText().toString().trim());
+//    Source source = null;
+//    String name = sourceName.getText().toString().trim();
+//    if (!name.isEmpty()) {
+//      for (Source s : sources) {
+//        if (name.equalsIgnoreCase(s.getName())) {
+//          source = s;
+//          break;
+//        }
+//      }
+//      if (source == null) {
+//        source = new Source();
+//        source.setName(name);
+//      }
+//    }
+//    quote.setSource(source);
+//    viewModel.save(quote);
+//  }
   }
+
 }
-
-

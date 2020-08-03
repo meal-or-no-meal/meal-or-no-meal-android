@@ -2,8 +2,12 @@ apply plugin: 'com.android.application'
 
 def getLocalProperty(propertyName) {
     Properties properties = new Properties();
-//    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
     return properties.getProperty(propertyName);
+}
+
+static def quoted(String value) {
+    return String.format("\"%s\"", value)
 }
 
 android {
@@ -19,8 +23,8 @@ android {
         //TODO If using Room - add JavaCompile options for schema location
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "CLIENT_ID", "\"\"" // TODO Get this from Google Cloud Console
-        buildConfigField "String", "BASE_URL", String.format("\"%s\"", getLocalProperty("base_url"))
+        buildConfigField "String", "CLIENT_ID", quoted("52882936176-7u2atq2mrnleqil7huj0aviban1pg4ul.apps.googleusercontent.com")
+        buildConfigField "String", "BASE_URL", quoted(getLocalProperty("base_url"))
     }
 
     buildTypes {
