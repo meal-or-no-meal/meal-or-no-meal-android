@@ -24,6 +24,7 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
   private final CompositeDisposable pending;
   private final Map<Long, Meal> mealMap;
 
+  //TODO Determine if backendservice is needed
 
   public CreatedMealsViewModel(@NonNull Application application) {
     super(application);

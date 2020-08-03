@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.mealornomeal.service;
 
-import android.content.Context;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -31,6 +30,10 @@ public class MealRepository {
         .subscribeOn(Schedulers.from(networkPool));
   }
 
+  public Single<Meal> getMeal(String idToken, long id) {
+    return backEndService.getMeal(getHeader(idToken))
+        .subscribeOn(Schedulers.from(networkPool));
+  }
 
   public Completable save(String idToken, Meal meal) {
     if (meal.getId() == 0) {

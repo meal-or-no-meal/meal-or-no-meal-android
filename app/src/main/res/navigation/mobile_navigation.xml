@@ -5,11 +5,6 @@
   android:id="@+id/mobile_navigation.xml"
   app:startDestination="@id/navigation_calendar">
 
-  <fragment
-    android:id="@+id/navigation_home"
-    android:label="Home"
-    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.HomeFragment"
-    tools:layout="@layout/fragment_home"/>
 
   <fragment
     android:id="@+id/navigation_calendar"

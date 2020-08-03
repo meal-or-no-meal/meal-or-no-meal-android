@@ -24,7 +24,7 @@ public class ListFragment extends Fragment implements OnIngredientClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
-      View view = inflater.inflate(R.layout.fragment_ingredient_list, container, false);
+      View view = inflater.inflate(R.layout.fragment_list, container, false);
       ingredientArray = view.findViewById(R.id.recycler_view);
       return view;
     }
@@ -37,7 +37,7 @@ public class ListFragment extends Fragment implements OnIngredientClickListener 
       viewModel.getIngredients().observe(getViewLifecycleOwner(), (ingredients) -> {
         if (ingredients != null) {
           ingredientArray.setAdapter(new IngredientListAdapter(getContext(),
-              Collections.singletonList(ingredients),
+              ingredients,
               this));
         }
       });
@@ -45,11 +45,7 @@ public class ListFragment extends Fragment implements OnIngredientClickListener 
 
   @Override
   public void onIngredientClick(int position, Ingredient ingredient) {
-
+// TODO - MOVE TO RECYCLERVIEW change box to checkbox when ingredient it clicked in list
   }
 
-//    @Override
-//    public void onSelected(Gallery gallery, Image image) {
-//      ImageDetailDialogFragment fragment = ImageDetailDialogFragment.newInstance(image);
-//      fragment.show(getChildFragmentManager(), fragment.getClass().getName());
     }

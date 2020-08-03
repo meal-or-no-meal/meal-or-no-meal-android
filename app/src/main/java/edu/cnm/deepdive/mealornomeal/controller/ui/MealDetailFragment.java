@@ -32,7 +32,7 @@ private static final String ID_KEY = "meal_id";
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-  //  mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
+  // mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
   }
 
   @Override

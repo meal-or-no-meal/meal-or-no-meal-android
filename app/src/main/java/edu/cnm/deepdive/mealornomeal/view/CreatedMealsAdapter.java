@@ -19,7 +19,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
   private final List<Meal> meals;
   private final OnEditListener onEditListener;
   private final OnDeleteListener onDeleteListener;
-//  private final OnScheduleListener onScheduleListener;
+//  private final OnScheduleListener onScheduleListener; //TODO implement scheduling functionality
 
   public CreatedMealsAdapter(Context context,
       List<Meal> meals, OnEditListener onEditListener,
@@ -29,7 +29,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
     this.meals = meals;
     this.onEditListener = onEditListener;
     this.onDeleteListener = onDeleteListener;
-//    this.onScheduleListener = onScheduleListener;
+//    this.onScheduleListener = onScheduleListener; //TODO implement scheduling functionality
     unnamedMeal = "Mystery Meal";
   }
 
@@ -79,7 +79,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
       prepTime.setText(meal.getPrepTime());
       edit.setOnClickListener((v) -> onEditListener.onEdit(meal));
       delete.setOnClickListener((v) -> onDeleteListener.onDelete(meal));
-//      scheduleMeal.setOnClickListener((v) -> onScheduleListener.onSchedule(meal));
+//      scheduleMeal.setOnClickListener((v) -> onScheduleListener.onSchedule(meal)); //TODO implement scheduling functionality
     }
 
   }

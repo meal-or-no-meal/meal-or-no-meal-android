@@ -28,7 +28,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
   @NonNull
   @Override
   public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View root = LayoutInflater.from(context).inflate(R.layout.item_ingredient, parent, false);
+    View root = LayoutInflater.from(context).inflate(R.layout.fragment_list, parent, false); //TODO Verify layout
     return new Holder(root);
   }
 

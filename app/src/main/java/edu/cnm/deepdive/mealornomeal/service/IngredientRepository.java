@@ -29,7 +29,6 @@ public class IngredientRepository {
         .subscribeOn(Schedulers.from(networkPool));
   }
 
-
   public Single<Ingredient> save(Ingredient ingredient, String idToken) {
     return backEndService.post(getHeader(idToken), ingredient)
         .subscribeOn(Schedulers.from(networkPool));

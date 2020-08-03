@@ -38,6 +38,10 @@ public interface BackEndService {
   @DELETE("meals/{id}")
   Completable delete(@Header("Authorization") String authHeader, @Path("id") long id);
 
+  //TODO Add methods for Ingrdients and Calendar
+
+
+
   static BackEndService getInstance() {
     return InstanceHolder.INSTANCE;
   }

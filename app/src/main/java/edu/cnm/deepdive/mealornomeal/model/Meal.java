@@ -56,4 +56,7 @@ public class Meal {
   public void setRequirements(String requirements) {
     this.requirements = requirements;
   }
+
+  //TODO determine relationship to get ingredients from a meal
+
 }

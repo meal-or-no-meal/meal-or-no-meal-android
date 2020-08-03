@@ -27,7 +27,7 @@ private CreatedMealsViewModel createdMealsViewModel;
     View view = inflater.inflate(R.layout.fragment_created_meals, container, false);
     createdMealList = view.findViewById(R.id.created_meals_recycler_view);
     view.findViewById(R.id.add_meal).setOnClickListener((v) -> editMeal(0));
-    return view;
+    return view; //TODO add other onclick listeners for delete and schedule
   }
 
   @Override
@@ -37,7 +37,6 @@ private CreatedMealsViewModel createdMealsViewModel;
     setupViewModel();
   }
 
-//TODO Sort this out
 
   private void setupViewModel() {
     createdMealsViewModel = new ViewModelProvider(getActivity())
