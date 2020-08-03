@@ -50,10 +50,4 @@
       android:id="@+id/details_to_meals"
       app:destination="@id/navigation_meals"/>
   </fragment>
-
-<!--  <fragment
-    android:id="@+id/navigation_ingredients"
-    android:label="Ingredients"
-    android:name="Mea"-->
-
 </navigation>

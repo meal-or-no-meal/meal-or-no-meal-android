@@ -7,18 +7,18 @@
   android:layout_height="match_parent"
   tools:context=".controller.ui.HomeFragment">
 
-<!--
-  <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background=""
-    android:minHeight="?attr/actionBarSize"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
--->
+<!--&lt;!&ndash; TODO necessary to delete-->
+<!--  <androidx.appcompat.widget.Toolbar-->
+<!--    android:id="@+id/toolbar"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:background=""-->
+<!--    android:minHeight="?attr/actionBarSize"-->
+<!--    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent"/>-->
+<!--&ndash;&gt;-->
 
   <TextView
     android:id="@+id/meals_or_no_meal"

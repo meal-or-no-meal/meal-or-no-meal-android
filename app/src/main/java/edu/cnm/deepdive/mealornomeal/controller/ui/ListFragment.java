@@ -24,7 +24,7 @@ public class ListFragment extends Fragment implements OnIngredientClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
-      View view = inflater.inflate(R.layout.ingredient_list, container, false);
+      View view = inflater.inflate(R.layout.fragment_ingredient_list, container, false);
       ingredientArray = view.findViewById(R.id.recycler_view);
       return view;
     }
