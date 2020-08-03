@@ -23,8 +23,9 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:padding="16dp"/>
-  <TextView
+  <EditText
     android:id="@+id/breakfast"
+    android:hint="breakfast"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Breakfast"
@@ -33,8 +34,9 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     />
-  <TextView
+  <EditText
     android:id="@+id/lunch"
+    android:hint="lunch"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Lunch"
@@ -43,8 +45,9 @@
     app:layout_constraintStart_toStartOf="parent"
     />
 
-  <TextView
+  <EditText
     android:id="@+id/dinner"
+    android:hint="dinner"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Dinner"
@@ -53,7 +56,7 @@
     app:layout_constraintStart_toStartOf="parent"
     />
   <CalendarView
-    android:id="@+id/calendarView"
+    android:id="@+id/calendar_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
