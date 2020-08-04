@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Ingredient;
-import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter.Holder;
 import java.util.List;
 

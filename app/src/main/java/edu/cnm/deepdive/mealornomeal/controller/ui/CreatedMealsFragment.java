@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
+import edu.cnm.deepdive.mealornomeal.controller.ui.CreatedMealsFragmentDirections.MealsToDetails;
 import edu.cnm.deepdive.mealornomeal.view.CreatedMealsAdapter;
 import edu.cnm.deepdive.mealornomeal.viewmodel.CreatedMealsViewModel;
 
@@ -26,19 +26,13 @@ private CreatedMealsViewModel createdMealsViewModel;
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_created_meals, container, false);
     createdMealList = view.findViewById(R.id.created_meals_recycler_view);
-    view.findViewById(R.id.add_meal).setOnClickListener((v) -> editMeal(0));
+    view.findViewById(R.id.add_meal).setOnClickListener((v) -> editMeal(0L));
     return view; //TODO add other onclick listeners for delete and schedule
   }
 
   @Override
-  public void onViewCreated(@NonNull View view,
-      @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    setupViewModel();
-  }
-
-
-  private void setupViewModel() {
     createdMealsViewModel = new ViewModelProvider(getActivity())
         .get(CreatedMealsViewModel.class);
     createdMealsViewModel.getMeals().observe(getViewLifecycleOwner(), (meals) -> {
@@ -46,22 +40,24 @@ private CreatedMealsViewModel createdMealsViewModel;
         createdMealList.setAdapter(new CreatedMealsAdapter(getContext(), meals,
             (meal) -> editMeal(meal.getId()),
             (meal) -> createdMealsViewModel.deleteMeal(meal),
-            (meal) -> {})); //TODO Work out meal scheduling
+            (meal) -> scheduleMeal(meal.getId())));
       }
     });
   }
 
 
-  private void editMeal(long id) {
-//    EditDetails action = CreatedMealsFragmentDirections.editMealDetails();
-//    action.setMealId(id);
-//    Navigation.findNavController(getView()).navigate(action);
+
+  private void editMeal(Long id) {
+    MealsToDetails action = CreatedMealsFragmentDirections.mealsToDetails();
+    action.setMealId(id);
+    Navigation.findNavController(getView()).navigate(action);
  }
 
-  private void scheduleMeal(long id) {
+  private void scheduleMeal(Long id) {
 //    EditMeal action = CreatedMealsFragmentDirections.editMeal();
 //    action.setMealId(id);
 //    Navigation.findNavController(getView()).navigate(action);
   }
+
 
 }

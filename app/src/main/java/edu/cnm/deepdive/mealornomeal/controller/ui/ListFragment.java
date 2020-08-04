@@ -14,7 +14,6 @@ import edu.cnm.deepdive.mealornomeal.model.Ingredient;
 import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter;
 import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter.OnIngredientClickListener;
 import edu.cnm.deepdive.mealornomeal.viewmodel.ListViewModel;
-import java.util.Collections;
 
 public class ListFragment extends Fragment implements OnIngredientClickListener {
 
@@ -25,7 +24,7 @@ public class ListFragment extends Fragment implements OnIngredientClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
       View view = inflater.inflate(R.layout.fragment_list, container, false);
-      ingredientArray = view.findViewById(R.id.recycler_view);
+      ingredientArray = view.findViewById(R.id.ingredient_list);
       return view;
     }
 

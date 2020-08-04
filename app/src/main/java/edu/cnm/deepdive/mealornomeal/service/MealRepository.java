@@ -30,20 +30,20 @@ public class MealRepository {
         .subscribeOn(Schedulers.from(networkPool));
   }
 
-  public Single<Meal> getMeal(String idToken, long id) {
-    return backEndService.getMeal(getHeader(idToken))
+  public Single<Meal> getMeal(String idToken, Long id) {
+    return backEndService.get(getHeader(idToken))
         .subscribeOn(Schedulers.from(networkPool));
   }
 
   public Completable save(String idToken, Meal meal) {
-    if (meal.getId() == 0) {
+    if (meal.getId() == 0L) {
       return Completable.fromSingle(
-          backEndService.postMeal(String.format(getHeader(idToken)), meal)
+          backEndService.postMeal(getHeader(idToken), meal)
               .subscribeOn(Schedulers.from(networkPool))
       );
     } else {
       return Completable.fromSingle(
-          backEndService.putMeal(String.format(getHeader(idToken)), meal, meal.getId())
+          backEndService.putMeal(getHeader(idToken), meal, meal.getId())
               .subscribeOn(Schedulers.from(networkPool))
       );
     }
@@ -54,7 +54,7 @@ public class MealRepository {
       return Completable.fromAction(() -> {})
           .subscribeOn(Schedulers.io());
     } else {
-      return backEndService.delete(String.format(getHeader(idToken)), meal.getId())
+      return backEndService.delete(getHeader(idToken), meal.getId())
               .subscribeOn(Schedulers.from(networkPool));
     }
   }

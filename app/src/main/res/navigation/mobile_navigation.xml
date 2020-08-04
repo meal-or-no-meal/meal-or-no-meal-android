@@ -14,9 +14,6 @@
     <action
       android:id="@+id/action_navigation_calendar_to_navigation_meal_details"
       app:destination="@id/navigation_meal_details"/>
-    <action
-      android:id="@+id/action_navigation_calendar_to_navigation_shopping_list"
-      app:destination="@id/navigation_shopping_list"/>
   </fragment>
 
   <fragment
@@ -37,15 +34,7 @@
   <fragment
     android:id="@+id/navigation_shopping_list"
     android:label="@string/title_shopping_list"
-    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.ListFragment">
-    <action
-      android:id="@+id/action_navigation_shopping_list_to_navigation_meal_details"
-      app:destination="@id/navigation_meal_details"/>
-    <action
-      android:id="@+id/action_navigation_shopping_list_to_navigation_calendar"
-      app:destination="@id/navigation_calendar"/>
-  </fragment>
-
+    android:name="edu.cnm.deepdive.mealornomeal.controller.ui.ListFragment"/>
 
   <fragment
     android:id="@+id/navigation_meal_details"
@@ -59,11 +48,5 @@
     <action
       android:id="@+id/details_to_meals"
       app:destination="@id/navigation_meals"/>
-    <action
-      android:id="@+id/action_navigation_meal_details_to_navigation_shopping_list"
-      app:destination="@id/navigation_shopping_list"/>
-    <action
-      android:id="@+id/action_navigation_meal_details_to_navigation_calendar"
-      app:destination="@id/navigation_calendar"/>
   </fragment>
 </navigation>
