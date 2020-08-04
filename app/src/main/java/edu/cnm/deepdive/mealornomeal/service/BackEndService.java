@@ -28,16 +28,16 @@ public interface BackEndService {
   Single<List<Meal>> getAllMeals(@Header("Authorization") String authHeader);
 
   @GET("meals/{id}")
-  Single<Meal> getMeal(@Header("Authorization") String authHeader);
+  Single<Meal> get(@Header("Authorization") String authHeader);
 
   @POST("meals")
   Single<Meal> postMeal(@Header("Authorization") String authHeader, @Body Meal meal);
 
   @PUT("meals/{id}")
-  Single<Meal> putMeal(@Header("Authorization") String authHeader, @Body Meal meal, @Path("id") long id);
+  Single<Meal> putMeal(@Header("Authorization") String authHeader, @Body Meal meal, @Path("id") Long id);
 
   @DELETE("meals/{id}")
-  Completable delete(@Header("Authorization") String authHeader, @Path("id") long id);
+  Completable delete(@Header("Authorization") String authHeader, @Path("id") Long id);
 
   @GET("ingredients/{id}")
   Single<Ingredient> getIngredient(@Header("Authorization") String authHeader);
