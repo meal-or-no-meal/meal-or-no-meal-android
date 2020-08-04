@@ -14,14 +14,16 @@ public class IngredientRepository {
   private static final String AUTH_HEADER_FORMAT = "Bearer %s";
   private static final int NETWORK_POOL_SIZE = 4;
 
-  private final Context context;
   private final BackEndService backEndService;
   private final ExecutorService networkPool;
 
-  public IngredientRepository(Context context) {
-    this.context = context;
+  public IngredientRepository() {
     backEndService = BackEndService.getInstance();
     networkPool = Executors.newFixedThreadPool(NETWORK_POOL_SIZE);
+  }
+
+  public static IngredientRepository getInstance() {
+    return InstanceHolder.INSTANCE;
   }
 
   public Single<List<Ingredient>> getAll(String idToken) {
@@ -37,6 +39,12 @@ public class IngredientRepository {
   public Completable delete(Ingredient ingredient, String idToken) {
     return backEndService.delete(getHeader(idToken), ingredient.getId())
         .subscribeOn(Schedulers.from(networkPool));
+  }
+
+  private static class InstanceHolder {
+
+    private static final IngredientRepository INSTANCE = new IngredientRepository();
+
   }
 
   private String getHeader(String idToken) {

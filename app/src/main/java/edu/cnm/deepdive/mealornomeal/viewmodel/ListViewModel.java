@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import edu.cnm.deepdive.mealornomeal.model.Ingredient;
 import edu.cnm.deepdive.mealornomeal.service.BackEndService;
+import edu.cnm.deepdive.mealornomeal.service.IngredientRepository;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
@@ -17,13 +18,13 @@ public class ListViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<List<Ingredient>> ingredients;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
-  private final BackEndService backEndService; //TODO Connect to ingredient repository?
+  IngredientRepository ingredientRepository;
 
   public ListViewModel(@NonNull Application application) {
     super(application);
     ingredients = new MutableLiveData<List<Ingredient>>();
     throwable = new MutableLiveData<Throwable>();
-    backEndService = BackEndService.getInstance(); //Todo 'getInstance' or 'newInstance'
+    ingredientRepository = IngredientRepository.getInstance(); //Todo 'getInstance' or 'newInstance'
     pending = new CompositeDisposable();
  //   loadData();
   }
