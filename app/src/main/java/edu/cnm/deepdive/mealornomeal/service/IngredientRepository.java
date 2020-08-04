@@ -25,12 +25,12 @@ public class IngredientRepository {
   }
 
   public Single<List<Ingredient>> getAll(String idToken) {
-    return backEndService.get(getHeader(idToken))
+    return backEndService.getAllIngredients(getHeader(idToken))
         .subscribeOn(Schedulers.from(networkPool));
   }
 
   public Single<Ingredient> save(Ingredient ingredient, String idToken) {
-    return backEndService.post(getHeader(idToken), ingredient)
+    return backEndService.postIngredient(getHeader(idToken), ingredient)
         .subscribeOn(Schedulers.from(networkPool));
   }
 

@@ -3,6 +3,7 @@ package edu.cnm.deepdive.mealornomeal.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.mealornomeal.BuildConfig;
+import edu.cnm.deepdive.mealornomeal.model.Ingredient;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -38,7 +39,16 @@ public interface BackEndService {
   @DELETE("meals/{id}")
   Completable delete(@Header("Authorization") String authHeader, @Path("id") long id);
 
-  //TODO Add methods for Ingrdients and Calendar
+  @GET("ingredients/{id}")
+  Single<Ingredient> getIngredient(@Header("Authorization") String authHeader);
+
+  @GET("ingredients")
+  Single<List<Ingredient>> getAllIngredients(@Header("Authorization") String authHeader);
+
+  @POST("ingredients")
+  Single<Ingredient> postIngredient(@Header("Authorization") String authHeader, @Body Ingredient ingredient);
+
+  //TODO Add methods for Calendar
 
 
 

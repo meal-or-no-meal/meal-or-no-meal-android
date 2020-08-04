@@ -18,11 +18,13 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
   private final Context context;
   private final List<Ingredient> ingredients;
   private final OnIngredientClickListener listener;
+  private final String unnamedIngredient;
 
   public IngredientListAdapter(Context context, List<Ingredient> ingredients, OnIngredientClickListener listener) {
     this.context = context;
     this.ingredients = ingredients;
     this.listener = listener;
+    unnamedIngredient = "Mystery Ingredient";
   }
 
   @NonNull
@@ -34,7 +36,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
 
   @Override
   public void onBindViewHolder(@NonNull Holder holder, int position) {
-    holder.bind(position, ingredients.get(position));
+    holder.bind(position);
   }
 
   @Override
@@ -49,24 +51,22 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
 
   }
 
+
   class Holder extends RecyclerView.ViewHolder {
 
-    private final TextView ingredientText;
-    private final TextView ingredientMeal;
+    private final TextView ingredientName;
+
 
     private Holder(View root) {
       super(root);
-      ingredientText = root.findViewById(R.id.ingredient);
+      ingredientName = root.findViewById(R.id.ingredient_name);
     }
 
-    private void bind(int position, Ingredient ingredient) {
-      ingredientText.setText(context.getString(R.string.ingredient_format, ingredient.getName()));
-      Meal meal = ingredient.getName();
-      String name = (meal != null) ? meal.getName() : null;
-      String attribution = (name != null)
-          ? context.getString(R.string.attribution_format, name)
-          : context.getString(R.string.unattributed_meal);
-      ingredientMeal.setText(attribution);
+    private void bind(int position) {
+      Ingredient ingredient = ingredients.get(position);
+      String name =
+          (ingredient.getName() != null) ? ingredient.getName() : unnamedIngredient;
+      ingredientName.setText(ingredient.getName());
       itemView.setOnClickListener((v) -> listener.onIngredientClick(getAdapterPosition(), ingredient));
       itemView.setTag(ingredient);
     }
