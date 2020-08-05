@@ -15,6 +15,9 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
   private GoogleSignInService signInService;

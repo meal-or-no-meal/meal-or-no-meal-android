@@ -11,6 +11,9 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import java.util.List;
 
+/**
+ * The type Meal detail adapter.
+ */
 public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Holder> {
 
   private final String unnamedMeal;
@@ -18,6 +21,13 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
   private final List<Meal> meals;
   private final OnClickListener clickListener;
 
+  /**
+   * Instantiates a new Meal detail adapter.
+   *
+   * @param meals         the meals
+   * @param context       the context
+   * @param clickListener the click listener
+   */
   public MealDetailAdapter(List<Meal> meals, Context context,
       OnClickListener clickListener) {
     super ();
@@ -48,6 +58,9 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
   }
 
 
+  /**
+   * The type Holder.
+   */
   public class Holder extends RecyclerView.ViewHolder {
 
     private final View mealDetailView;
@@ -57,6 +70,11 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
     private final EditText recipe;
     private final EditText equipment;
 
+    /**
+     * Instantiates a new Holder.
+     *
+     * @param mealDetailView the meal detail view
+     */
     public Holder(@NonNull View mealDetailView) {
       super(mealDetailView);
       this.mealDetailView = mealDetailView;
@@ -82,7 +100,18 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
 
   }
 
+  /**
+   * The interface On click listener.
+   */
   public interface OnClickListener {
+
+    /**
+     * On click.
+     *
+     * @param v        the v
+     * @param position the position
+     * @param meal     the meal
+     */
     void OnClick(View v, int position, Meal meal);
   }
 

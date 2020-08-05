@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.widget.EditText;
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,10 +10,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.viewmodel.MealDetailViewModel;
 
+/**
+ * The type Meal detail fragment.
+ */
 public class MealDetailFragment extends Fragment {
 
 private static final String ID_KEY = "meal_id";
@@ -24,7 +28,7 @@ private static final String ID_KEY = "meal_id";
   private EditText ingredients;
   private EditText recipe;
   private EditText requirements;
-  private long mealId;
+  private Long mealId;
   private Meal meal;
   private MealDetailViewModel mealDetailViewModel;
 
@@ -32,7 +36,7 @@ private static final String ID_KEY = "meal_id";
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-  // mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
+  mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
   }
 
   @Override
@@ -46,7 +50,8 @@ private static final String ID_KEY = "meal_id";
 
     view.findViewById(R.id.save_details).setOnClickListener((v) -> {
       save();
-      //TODO add navigation back to meal list
+      NavDirections action = MealDetailFragmentDirections.detailsToMeals();
+      Navigation.findNavController(getView()).navigate(action);
     });
     return view;
   }
@@ -67,7 +72,7 @@ private static final String ID_KEY = "meal_id";
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     mealDetailViewModel = new ViewModelProvider(getActivity()).get(MealDetailViewModel.class);
-    if (mealId != 0) {
+    if (mealId != 0L) {
       mealDetailViewModel.getMeal().observe(getViewLifecycleOwner(), (meal) -> {
         this.meal = meal;
         mealName.setText(meal.getName());

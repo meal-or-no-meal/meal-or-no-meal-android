@@ -9,10 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Ingredient;
-import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter.Holder;
 import java.util.List;
 
+/**
+ * The type Ingredient list adapter.
+ */
 public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
 
   private final Context context;
@@ -20,6 +22,13 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
   private final OnIngredientClickListener listener;
   private final String unnamedIngredient;
 
+  /**
+   * Instantiates a new Ingredient list adapter.
+   *
+   * @param context     the context
+   * @param ingredients the ingredients
+   * @param listener    the listener
+   */
   public IngredientListAdapter(Context context, List<Ingredient> ingredients, OnIngredientClickListener listener) {
     this.context = context;
     this.ingredients = ingredients;
@@ -44,14 +53,26 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
     return ingredients.size();
   }
 
+  /**
+   * The interface On ingredient click listener.
+   */
   @FunctionalInterface
   public interface OnIngredientClickListener {
 
+    /**
+     * On ingredient click.
+     *
+     * @param position   the position
+     * @param ingredient the ingredient
+     */
     void onIngredientClick(int position, Ingredient ingredient);
 
   }
 
 
+  /**
+   * The type Holder.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final TextView ingredientName;

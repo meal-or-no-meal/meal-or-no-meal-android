@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.mealornomeal.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -13,6 +12,9 @@ import io.reactivex.disposables.CompositeDisposable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Meal detail view model.
+ */
 public class MealDetailViewModel extends AndroidViewModel {
 
   private final MealRepository mealRepository;
@@ -22,6 +24,11 @@ public class MealDetailViewModel extends AndroidViewModel {
   private final Map<Long, Meal> mealMap;
 
 
+  /**
+   * Instantiates a new Meal detail view model.
+   *
+   * @param application the application
+   */
   public MealDetailViewModel(@NonNull Application application) {
     super(application);
     mealRepository = new MealRepository();
@@ -31,13 +38,28 @@ public class MealDetailViewModel extends AndroidViewModel {
     mealMap = new HashMap<>();
   }
 
+  /**
+   * Gets meal.
+   *
+   * @return the meal
+   */
   public LiveData<Meal> getMeal() {return meal;}
 
+  /**
+   * Gets throwable.
+   *
+   * @return the throwable
+   */
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
 
+  /**
+   * Save meal.
+   *
+   * @param meal the meal
+   */
   public void saveMeal(Meal meal) {
     throwable.setValue(null);
     GoogleSignInService.getInstance().refresh()
@@ -55,7 +77,12 @@ public class MealDetailViewModel extends AndroidViewModel {
         .addOnFailureListener(throwable::postValue);
   }
 
-  public void setMealId(long id) {
+  /**
+   * Sets meal id.
+   *
+   * @param id the id
+   */
+  public void setMealId(Long id) {
     meal.setValue(mealMap.get(id));
   }
 

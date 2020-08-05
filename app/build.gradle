@@ -1,14 +1,20 @@
 apply plugin: 'com.android.application'
+apply plugin: 'androidx.navigation.safeargs'
 
 def getLocalProperty(propertyName) {
     Properties properties = new Properties();
+    File file = project.rootProject.file("local.properties")
+    if (!file.exists()){
+        file.createNewFile()
+    }
     properties.load(project.rootProject.file("local.properties").newDataInputStream())
-    return properties.getProperty(propertyName);
+    return properties.getProperty(propertyName)
 }
 
 static def quoted(String value) {
     return String.format("\"%s\"", value)
 }
+
 
 android {
     compileSdkVersion 29
@@ -24,7 +30,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "CLIENT_ID", quoted("52882936176-7u2atq2mrnleqil7huj0aviban1pg4ul.apps.googleusercontent.com")
-        buildConfigField "String", "BASE_URL", quoted(getLocalProperty("base_url"))
+        buildConfigField "String", "BASE_URL", quoted(getLocalProperty("base_url") ?: "http://10.0.2.2:8080/")
     }
 
     buildTypes {
@@ -41,6 +47,9 @@ android {
     }
 }
 
+
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -52,23 +61,24 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
-    // TODO Add google play services authentication
+
 
     // ReactiveX dependencies
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
 
-   
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'org.jetbrains:annotations:19.0.0'
 
-// Retrofit dependencies
+    // Retrofit dependencies
     def retrofit_version = "2.6.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
     // Retrofit (HTTP client) dependencies
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
 
