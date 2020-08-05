@@ -84,5 +84,34 @@
     app:layout_constraintEnd_toStartOf="@id/dinner"
     />
 
+  <Button
+    android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Button"
+    app:layout_constraintStart_toEndOf="@id/breakfast"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="@id/breakfast" />
+
+  <Button
+    android:id="@+id/button2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Button"
+    app:layout_constraintStart_toEndOf="@id/lunch"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="@id/lunch"
+    />
+  <Button
+    android:id="@+id/button3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Button"
+    app:layout_constraintStart_toEndOf="@id/dinner"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="@id/dinner"
+
+/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
