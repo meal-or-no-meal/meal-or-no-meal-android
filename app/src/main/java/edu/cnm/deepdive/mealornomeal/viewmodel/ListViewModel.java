@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import edu.cnm.deepdive.mealornomeal.BuildConfig;
 import edu.cnm.deepdive.mealornomeal.model.Ingredient;
 import edu.cnm.deepdive.mealornomeal.service.BackEndService;
 import edu.cnm.deepdive.mealornomeal.service.IngredientRepository;
@@ -26,7 +27,7 @@ public class ListViewModel extends AndroidViewModel implements LifecycleObserver
     throwable = new MutableLiveData<Throwable>();
     ingredientRepository = IngredientRepository.getInstance(); //Todo 'getInstance' or 'newInstance'
     pending = new CompositeDisposable();
- //   loadData();
+    loadData();
   }
 
   public LiveData<List<Ingredient>> getIngredients() {
@@ -38,28 +39,25 @@ public class ListViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   //TODO Adapt below code to MONM application
-//  public void loadData() {
-//    pending.add(
-//      //  imgurService.getSearchResult(BuildConfig.CLIENT_ID,
-//        //    "Cars")
-//            .subscribeOn(Schedulers.io())
-//            .map((result) -> {
-//              List<Ingredient> ingredients = result.getData();
-//              ingredients.removeIf((gallery) ->
-//                  gallery.getImages() == null ||
-//                      gallery.getImages().isEmpty());
-//              return ingredients;
-//            })
-//            .subscribe(
-//                value -> ListViewModel.this.ingredients.postValue(value),
-//                throwable -> this.throwable.postValue(throwable.getCause())
-//            )
-//    );
-//  }
+  public void loadData() {
+    pending.add(BackEndService.getInstance()
+            .getAllIngredients(Single<List<Ingredient>>)
+            .map((result) -> {
+              List<Ingredient> ingredients = result(getIngredients());
+              return ingredients;
+            })
+            .subscribe(
+                value -> ListViewModel.this.ingredients.postValue(ingredients),
+                throwable -> this.throwable.postValue(throwable.())
+            )
+    );
+  }
 
   @Override
   protected void onCleared() {
     super.onCleared();
     pending.clear();
+
+
   }
 }

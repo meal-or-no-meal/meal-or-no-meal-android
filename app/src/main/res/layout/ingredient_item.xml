@@ -6,15 +6,19 @@
   android:layout_margin="4dp">
 
 
-  <TextView
+  <CheckedTextView
     android:id="@+id/ingredient_name"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:checked="true"
+    android:checkMark="@drawable/checked"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     android:layout_marginStart="8dp"
     android:text="MARZIPAN"
-    android:textSize="25sp"/>
+    android:textSize="25sp"
+  />
+
 
 
 

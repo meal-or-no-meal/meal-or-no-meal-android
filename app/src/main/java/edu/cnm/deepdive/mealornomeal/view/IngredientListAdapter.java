@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +55,6 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
   class Holder extends RecyclerView.ViewHolder {
 
     private final TextView ingredientName;
-
 
     private Holder(View root) {
       super(root);
