@@ -64,7 +64,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
     public Holder(@NonNull View createdMealsView) {
       super(createdMealsView);
       this.createdMealsView = createdMealsView;
-      mealName = createdMealsView.findViewById(R.id.meal_name);
+      mealName = createdMealsView.findViewById(R.id.edit_name);
       prepTime = createdMealsView.findViewById(R.id.prep_time);
       edit = createdMealsView.findViewById(R.id.edit);
       delete = createdMealsView.findViewById(R.id.delete);
@@ -76,7 +76,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
       String name =
           (meal.getName() != null) ? meal.getName() : unnamedMeal;
       mealName.setText(meal.getName());
-      prepTime.setText(meal.getPrepTime());
+      prepTime.setText(meal.getPrepTime().toString());
       edit.setOnClickListener((v) -> onEditListener.onEdit(meal));
       delete.setOnClickListener((v) -> onDeleteListener.onDelete(meal));
 //      scheduleMeal.setOnClickListener((v) -> onScheduleListener.onSchedule(meal)); //TODO implement scheduling functionality

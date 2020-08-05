@@ -40,7 +40,7 @@ private static final String ID_KEY = "meal_id";
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_meal_detail, container, false);
     prepTime = view.findViewById(R.id.prep_time);
-    mealName = view.findViewById(R.id.meal_name);
+    mealName = view.findViewById(R.id.edit_name);
     ingredients = view.findViewById(R.id.ingredients);
     recipe = view.findViewById(R.id.recipe);
     requirements = view.findViewById(R.id.equipment_needed);
@@ -57,7 +57,7 @@ private static final String ID_KEY = "meal_id";
     meal.setName(mealName.getText().toString().trim());
     String prepTimeText = prepTime.getText().toString().trim();
     meal.setPrepTime(prepTimeText.isEmpty() ? 0 : Integer.parseInt(prepTimeText));
-//    meal.setIngredients(ingredients.getText().toString().trim()); //TODO connect this to ingredients
+//    meal.setIngredients(ingredients.getText().toString().trim());
     meal.setRequirements(requirements.getText().toString().trim());
     meal.setInstruction(recipe.getText().toString().trim());
     mealDetailViewModel.saveMeal(meal);
@@ -69,7 +69,8 @@ private static final String ID_KEY = "meal_id";
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     mealDetailViewModel = new ViewModelProvider(getActivity()).get(MealDetailViewModel.class);
-    if (mealId != 0L) {
+    if (mealId != null) {
+
       mealDetailViewModel.getMeal().observe(getViewLifecycleOwner(), (meal) -> {
         this.meal = meal;
         mealName.setText(meal.getName());
@@ -83,6 +84,5 @@ private static final String ID_KEY = "meal_id";
       meal = new Meal();
     }
   }
-
 
 }

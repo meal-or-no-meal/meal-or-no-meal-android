@@ -61,7 +61,7 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
       super(mealDetailView);
       this.mealDetailView = mealDetailView;
       prepTime = mealDetailView.findViewById(R.id.prep_time);
-      mealName = mealDetailView.findViewById(R.id.meal_name);
+      mealName = mealDetailView.findViewById(R.id.edit_name);
       ingredients = mealDetailView.findViewById(R.id.ingredients);
       recipe = mealDetailView.findViewById(R.id.recipe);
       equipment = mealDetailView.findViewById(R.id.equipment_needed);
