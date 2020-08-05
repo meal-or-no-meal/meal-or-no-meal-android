@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * The type Created meals view model.
+ */
 public class CreatedMealsViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final MutableLiveData<Meal> meal;
@@ -26,6 +29,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
 
   //TODO Determine if backendservice is needed
 
+  /**
+   * Instantiates a new Created meals view model.
+   *
+   * @param application the application
+   */
   public CreatedMealsViewModel(@NonNull Application application) {
     super(application);
     meal = new MutableLiveData<Meal>();
@@ -38,11 +46,19 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
   }
 
 
+  /**
+   * Gets meals.
+   *
+   * @return the meals
+   */
   public LiveData<List<Meal>> getMeals() {
     return meals;
   }
 
 
+  /**
+   * Refresh meals.
+   */
   public void refreshMeals() {
     throwable.postValue(null);
     GoogleSignInService.getInstance().refresh()
@@ -63,6 +79,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
         .addOnFailureListener(throwable::postValue);
   }
 
+  /**
+   * Delete meal.
+   *
+   * @param meal the meal
+   */
   public void deleteMeal(Meal meal) {
     throwable.setValue(null);
     GoogleSignInService.getInstance().refresh()

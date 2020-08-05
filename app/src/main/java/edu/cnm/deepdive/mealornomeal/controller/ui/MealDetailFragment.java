@@ -16,6 +16,9 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.viewmodel.MealDetailViewModel;
 
+/**
+ * The type Meal detail fragment.
+ */
 public class MealDetailFragment extends Fragment {
 
 private static final String ID_KEY = "meal_id";

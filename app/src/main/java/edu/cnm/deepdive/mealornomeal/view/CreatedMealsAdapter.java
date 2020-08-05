@@ -12,6 +12,9 @@ import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.view.CreatedMealsAdapter.Holder;
 import java.util.List;
 
+/**
+ * The type Created meals adapter.
+ */
 public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
 
   private final String unnamedMeal;
@@ -21,6 +24,15 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
   private final OnDeleteListener onDeleteListener;
 //  private final OnScheduleListener onScheduleListener; //TODO implement scheduling functionality
 
+  /**
+   * Instantiates a new Created meals adapter.
+   *
+   * @param context            the context
+   * @param meals              the meals
+   * @param onEditListener     the on edit listener
+   * @param onDeleteListener   the on delete listener
+   * @param onScheduleListener the on schedule listener
+   */
   public CreatedMealsAdapter(Context context,
       List<Meal> meals, OnEditListener onEditListener,
       OnDeleteListener onDeleteListener,
@@ -51,6 +63,9 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
     return meals.size();
   }
 
+  /**
+   * The type Holder.
+   */
   class Holder extends RecyclerView.ViewHolder {
 
     private final View createdMealsView;
@@ -61,6 +76,11 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
     private final View scheduleMeal;
 
 
+    /**
+     * Instantiates a new Holder.
+     *
+     * @param createdMealsView the created meals view
+     */
     public Holder(@NonNull View createdMealsView) {
       super(createdMealsView);
       this.createdMealsView = createdMealsView;
@@ -84,18 +104,42 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
 
   }
 
+  /**
+   * The interface On edit listener.
+   */
   public interface OnEditListener {
 
+    /**
+     * On edit.
+     *
+     * @param meal the meal
+     */
     void onEdit(Meal meal);
   }
 
+  /**
+   * The interface On delete listener.
+   */
   public interface OnDeleteListener {
 
+    /**
+     * On delete.
+     *
+     * @param meal the meal
+     */
     void onDelete(Meal meal);
   }
 
+  /**
+   * The interface On schedule listener.
+   */
   public interface OnScheduleListener {
 
+    /**
+     * On schedule.
+     *
+     * @param meal the meal
+     */
     void onSchedule(Meal meal);
   }
 

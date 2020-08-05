@@ -16,7 +16,9 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.viewmodel.MealDetailViewModel;
 
 
-
+/**
+ * The type Calendar fragment.
+ */
 public class CalendarFragment extends DialogFragment {
 
   private MealDetailViewModel viewModel;

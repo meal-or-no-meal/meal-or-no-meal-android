@@ -13,13 +13,24 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
+/**
+ * The type List view model.
+ */
 public class ListViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final MutableLiveData<List<Ingredient>> ingredients;
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
+  /**
+   * The Ingredient repository.
+   */
   IngredientRepository ingredientRepository;
 
+  /**
+   * Instantiates a new List view model.
+   *
+   * @param application the application
+   */
   public ListViewModel(@NonNull Application application) {
     super(application);
     ingredients = new MutableLiveData<List<Ingredient>>();
@@ -29,10 +40,20 @@ public class ListViewModel extends AndroidViewModel implements LifecycleObserver
  //   loadData();
   }
 
+  /**
+   * Gets ingredients.
+   *
+   * @return the ingredients
+   */
   public LiveData<List<Ingredient>> getIngredients() {
     return ingredients;
   }
 
+  /**
+   * Gets throwable.
+   *
+   * @return the throwable
+   */
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }

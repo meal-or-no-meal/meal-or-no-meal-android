@@ -15,6 +15,9 @@ import edu.cnm.deepdive.mealornomeal.controller.ui.CreatedMealsFragmentDirection
 import edu.cnm.deepdive.mealornomeal.view.CreatedMealsAdapter;
 import edu.cnm.deepdive.mealornomeal.viewmodel.CreatedMealsViewModel;
 
+/**
+ * The type Created meals fragment.
+ */
 public class CreatedMealsFragment extends Fragment {
 
 private RecyclerView createdMealList;

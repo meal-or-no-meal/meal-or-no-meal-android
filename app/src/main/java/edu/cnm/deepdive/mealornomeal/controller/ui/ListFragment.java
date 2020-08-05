@@ -15,6 +15,9 @@ import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter;
 import edu.cnm.deepdive.mealornomeal.view.IngredientListAdapter.OnIngredientClickListener;
 import edu.cnm.deepdive.mealornomeal.viewmodel.ListViewModel;
 
+/**
+ * The type List fragment.
+ */
 public class ListFragment extends Fragment implements OnIngredientClickListener {
 
     private RecyclerView ingredientArray;

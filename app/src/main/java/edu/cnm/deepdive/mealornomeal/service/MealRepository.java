@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The type Meal repository.
+ */
 public class MealRepository {
 
   private static final String AUTH_HEADER_FORMAT = "Bearer %s";
@@ -16,25 +19,53 @@ public class MealRepository {
   private final BackEndService backEndService;
   private final ExecutorService networkPool;
 
+  /**
+   * Instantiates a new Meal repository.
+   */
   public MealRepository() {
     backEndService = BackEndService.getInstance();
     networkPool = Executors.newFixedThreadPool(NETWORK_POOL_SIZE);
   }
 
+  /**
+   * Gets instance.
+   *
+   * @return the instance
+   */
   public static MealRepository getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
+  /**
+   * Gets all meals.
+   *
+   * @param idToken the id token
+   * @return the all meals
+   */
   public Single<List<Meal>> getAllMeals(String idToken) {
     return backEndService.getAllMeals(getHeader(idToken))
         .subscribeOn(Schedulers.from(networkPool));
   }
 
+  /**
+   * Gets meal.
+   *
+   * @param idToken the id token
+   * @param id      the id
+   * @return the meal
+   */
   public Single<Meal> getMeal(String idToken, Long id) {
     return backEndService.get(getHeader(idToken))
         .subscribeOn(Schedulers.from(networkPool));
   }
 
+  /**
+   * Save completable.
+   *
+   * @param idToken the id token
+   * @param meal    the meal
+   * @return the completable
+   */
   public Completable save(String idToken, Meal meal) {
     if (meal.getId() == null) {
       return Completable.fromSingle(
@@ -49,6 +80,13 @@ public class MealRepository {
     }
   }
 
+  /**
+   * Delete completable.
+   *
+   * @param meal    the meal
+   * @param idToken the id token
+   * @return the completable
+   */
   public Completable delete (Meal meal, String idToken) {
     if (meal.getId() == null) {
       return Completable.fromAction(() -> {})

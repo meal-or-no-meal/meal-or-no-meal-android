@@ -22,41 +22,104 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
+/**
+ * The interface Back end service.
+ */
 public interface BackEndService {
 
+  /**
+   * Gets all meals.
+   *
+   * @param authHeader the auth header
+   * @return the all meals
+   */
   @GET("meals")
   Single<List<Meal>> getAllMeals(@Header("Authorization") String authHeader);
 
+  /**
+   * Get single.
+   *
+   * @param authHeader the auth header
+   * @return the single
+   */
   @GET("meals/{id}")
   Single<Meal> get(@Header("Authorization") String authHeader);
 
+  /**
+   * Post meal single.
+   *
+   * @param authHeader the auth header
+   * @param meal       the meal
+   * @return the single
+   */
   @POST("meals")
   Single<Meal> postMeal(@Header("Authorization") String authHeader, @Body Meal meal);
 
+  /**
+   * Put meal single.
+   *
+   * @param authHeader the auth header
+   * @param meal       the meal
+   * @param id         the id
+   * @return the single
+   */
   @PUT("meals/{id}")
   Single<Meal> putMeal(@Header("Authorization") String authHeader, @Body Meal meal, @Path("id") Long id);
 
+  /**
+   * Delete completable.
+   *
+   * @param authHeader the auth header
+   * @param id         the id
+   * @return the completable
+   */
   @DELETE("meals/{id}")
   Completable delete(@Header("Authorization") String authHeader, @Path("id") Long id);
 
+  /**
+   * Gets ingredient.
+   *
+   * @param authHeader the auth header
+   * @return the ingredient
+   */
   @GET("ingredients/{id}")
   Single<Ingredient> getIngredient(@Header("Authorization") String authHeader);
 
+  /**
+   * Gets all ingredients.
+   *
+   * @param authHeader the auth header
+   * @return the all ingredients
+   */
   @GET("ingredients")
   Single<List<Ingredient>> getAllIngredients(@Header("Authorization") String authHeader);
 
+  /**
+   * Post ingredient single.
+   *
+   * @param authHeader the auth header
+   * @param ingredient the ingredient
+   * @return the single
+   */
   @POST("ingredients")
   Single<Ingredient> postIngredient(@Header("Authorization") String authHeader, @Body Ingredient ingredient);
 
   //TODO Add methods for Calendar
 
 
-
+  /**
+   * Gets instance.
+   *
+   * @return the instance
+   */
   static BackEndService getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
 
+  /**
+   * The type Instance holder.
+   */
   class InstanceHolder {
 
     private static final BackEndService INSTANCE;
