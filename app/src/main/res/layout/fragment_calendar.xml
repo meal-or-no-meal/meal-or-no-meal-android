@@ -99,7 +99,7 @@
     android:text="Dinner"
     android:textSize="22dp"
     app:layout_constraintEnd_toStartOf="@id/dinner_info"
-    app:layout_constraintBottom_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/lunch"
     app:layout_constraintWidth_percent="0.5"
