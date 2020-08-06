@@ -96,12 +96,19 @@ public class IngredientListAdapter extends RecyclerView.Adapter<Holder> {
 
     private final TextView ingredientName;
 
-
+    /**
+     * holds element
+     * @param root
+     */
     private Holder(View root) {
       super(root);
       ingredientName = root.findViewById(R.id.ingredient_name);
     }
 
+    /**
+     * binds elements together.
+     * @param position
+     */
     private void bind(int position) {
       Ingredient ingredient = ingredients.get(position);
       String name =

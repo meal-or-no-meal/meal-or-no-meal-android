@@ -22,7 +22,7 @@ package edu.cnm.deepdive.mealornomeal.model;
 import com.google.gson.annotations.Expose;
 
 /**
- * The type Ingredient.
+ * The Ingredient class provides the elements to be able to retrieve and send data.
  */
 public class Ingredient {
 

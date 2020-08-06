@@ -35,7 +35,8 @@ import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 
 
 /**
- * The type Main activity.
+ * This Main activity is displaying the navigation and all of the preloaded
+ * data that displays apon installment of the app..
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     return handled;
   }
 
+  /**
+   * Navigation for bottom nav set up.
+   */
   private void setupNavigation() {
     BottomNavigationView navView = findViewById(R.id.nav_view);
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -81,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
     NavigationUI.setupActionBarWithNavController(this, navController, config);
     NavigationUI.setupWithNavController(navView, navController);
   }
+
+  /**
+   * observer for google sign in.
+   */
   private void setupObservers() {
     signInService = GoogleSignInService.getInstance();
     signInService.getAccount().observe(this, (account) -> {
@@ -90,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
+  /**
+   * switches to Login activity.
+   */
   private void switchToLogin() {
     Intent intent = new Intent(this, LoginActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

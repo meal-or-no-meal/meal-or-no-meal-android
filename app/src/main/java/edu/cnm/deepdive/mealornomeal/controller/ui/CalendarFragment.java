@@ -32,7 +32,8 @@ import androidx.fragment.app.DialogFragment;
 import edu.cnm.deepdive.mealornomeal.R;
 
 /**
- * The type Calendar fragment.
+ * This Calendar fragment is responsible for the displaying of
+ * data which it receives from the meals repository along with the data from the calendar layout.
  */
 
 public class CalendarFragment extends DialogFragment {

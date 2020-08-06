@@ -22,7 +22,7 @@ package edu.cnm.deepdive.mealornomeal.model;
 import com.google.gson.annotations.Expose;
 
 /**
- * The type Meal.
+ * The Meal class provides the elements to be able to retrieve and send data.
  */
 public class Meal {
 

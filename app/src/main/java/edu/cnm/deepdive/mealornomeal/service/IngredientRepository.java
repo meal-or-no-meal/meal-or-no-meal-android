@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * The type Ingredient repository.
+ * This Ingredient repository is the point of connection between front end and back end.
  */
 public class IngredientRepository {
 

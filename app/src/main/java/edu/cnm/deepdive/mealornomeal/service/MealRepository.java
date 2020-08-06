@@ -28,7 +28,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * The type Meal repository.
+ * This Meal repository is the point of connection between front end and back end.
  */
 public class MealRepository {
 
@@ -79,7 +79,7 @@ public class MealRepository {
   }
 
   /**
-   * Save single.
+   * Saves a single meal.
    *
    * @param idToken the id token
    * @param meal    the meal
@@ -96,7 +96,7 @@ public class MealRepository {
   }
 
   /**
-   * Delete completable.
+   * Deletes completable a single meal.
    *
    * @param meal    the meal
    * @param idToken the id token
@@ -117,6 +117,9 @@ public class MealRepository {
     return String.format(AUTH_HEADER_FORMAT, idToken);
   }
 
+  /**
+   * creates a new instance and holder.
+   */
   private static class InstanceHolder {
 
     private static final MealRepository INSTANCE = new MealRepository();

@@ -46,7 +46,7 @@ public class ListFragment extends Fragment implements OnIngredientClickListener 
 
   /**
    * General setup for the connecting the MealDetail layout with the controller and viewmodel.
-   * Inflates the fragment and sets up the {@link ingredientArray} for selecting
+   * Inflates the fragment and sets up the ingredientArray for selecting
    * an ingredient. It also enables the Save button functionality saving any edited fields
    * to the database.
    */

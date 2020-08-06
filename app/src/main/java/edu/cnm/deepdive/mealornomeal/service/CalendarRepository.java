@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * The type Calendar repository.
+ * This Calendar repository is the point of connection between front end and back end.
  */
 public class CalendarRepository {
 

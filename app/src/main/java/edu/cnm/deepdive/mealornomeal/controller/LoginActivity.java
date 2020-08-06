@@ -29,7 +29,7 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 
 /**
- * The type Login activity.
+ * This Login activity monitors the activity and executes the required code to have a successful sign in.
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -62,6 +62,9 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * Switches to main activity.
+   */
   private void switchToMain() {
     Intent intent = new Intent(this, MainActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

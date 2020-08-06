@@ -43,7 +43,8 @@ import org.jetbrains.annotations.NotNull;
 
 
 /**
- * The type Meal schedule fragment.
+ * This Meal schedule fragment is responsible for connecting with
+ * the calendar and meal fragments to schedule a meal in the calendar.
  */
 public class MealScheduleFragment extends DialogFragment {
 
@@ -58,7 +59,7 @@ public class MealScheduleFragment extends DialogFragment {
 
 
   /**
-   * New instance meal schedule fragment.
+   * This method creates a new instance of scheduling a meal.
    *
    * @param id the id
    * @return the meal schedule fragment
@@ -99,6 +100,9 @@ public class MealScheduleFragment extends DialogFragment {
     return dialog;
   }
 
+  /**
+   * this method saves a calendars meal slots that have been populated with a meal.
+   */
   private void save() {
     Calendar calendar = new Calendar();
     Meal meal = new Meal();

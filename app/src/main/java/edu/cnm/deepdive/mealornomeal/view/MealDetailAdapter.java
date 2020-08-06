@@ -104,6 +104,10 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
       equipment = mealDetailView.findViewById(R.id.equipment_needed);
     }
 
+    /**
+     * binds elements together.
+     * @param position
+     */
     private void bind(int position) {
       Meal meal = MealDetailAdapter.this.meals.get(position);
       String name =

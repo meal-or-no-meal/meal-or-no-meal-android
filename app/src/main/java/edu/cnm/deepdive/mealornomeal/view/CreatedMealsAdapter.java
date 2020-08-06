@@ -110,6 +110,10 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
       scheduleMeal = createdMealsView.findViewById(R.id.schedule_meal);
     }
 
+    /**
+     * binds elements together.
+     * @param position
+     */
     private void bind(int position) {
       Meal meal = meals.get(position);
       String name =

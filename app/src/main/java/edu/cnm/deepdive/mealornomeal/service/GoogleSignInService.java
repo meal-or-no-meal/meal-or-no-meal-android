@@ -35,7 +35,7 @@ import edu.cnm.deepdive.mealornomeal.BuildConfig;
 
 
 /**
- * The type Google sign in service.
+ * This is the Google sign in service that provides google sign in authentication.
  */
 public class GoogleSignInService {
 
@@ -46,6 +46,9 @@ public class GoogleSignInService {
   private final MutableLiveData<GoogleSignInAccount> account;
   private final MutableLiveData<Throwable> throwable;
 
+  /**
+   * this requests all requires data to be able to authenticate.
+   */
   private GoogleSignInService() {
     account = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
@@ -96,7 +99,7 @@ public class GoogleSignInService {
 
 
   /**
-   * Refresh task.
+   * Refreshes google sign in task.
    *
    * @return the task
    */
@@ -107,7 +110,7 @@ public class GoogleSignInService {
   }
 
   /**
-   * Start sign in.
+   * Starts the sign in.
    *
    * @param activity    the activity
    * @param requestCode the request code
@@ -119,7 +122,7 @@ public class GoogleSignInService {
   }
 
   /**
-   * Complete sign in task.
+   * Completes sign in task.
    *
    * @param data the data
    * @return the task
@@ -136,7 +139,7 @@ public class GoogleSignInService {
   }
 
   /**
-   * Sign out task.
+   * Signing out task.
    *
    * @return the task
    */
@@ -145,6 +148,10 @@ public class GoogleSignInService {
         .addOnCompleteListener((ignored) -> update((GoogleSignInAccount) null));
   }
 
+  /**
+   * updates to confirm authentication
+   * @param account
+   */
   private void update(GoogleSignInAccount account) {
     if (account != null) {
       Log.d(getClass().getName(), "Bearer " + account.getIdToken());
@@ -153,11 +160,18 @@ public class GoogleSignInService {
     this.throwable.setValue(null);
   }
 
+  /**
+   * updates account.
+   * @param throwable
+   */
   private void update(Throwable throwable) {
     this.account.setValue(null);
     this.throwable.setValue(throwable);
   }
 
+  /**
+   * creates new instance and holder.
+   */
   private static class InstanceHolder {
 
     private static final GoogleSignInService INSTANCE = new GoogleSignInService();
