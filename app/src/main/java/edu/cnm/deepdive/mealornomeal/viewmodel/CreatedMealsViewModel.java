@@ -59,6 +59,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
     return meals;
   }
 
+  /**
+   * Gets meal.
+   *
+   * @return the meal
+   */
   public LiveData<Meal> getMeal() {
     return meal;
   }
@@ -80,6 +85,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
     );
   }
 
+  /**
+   * Save meal.
+   *
+   * @param meal the meal
+   */
   public void saveMeal(Meal meal) {
     refreshAndExecute((account) -> mealRepository.save(account.getIdToken(), meal)
         .subscribe(
@@ -111,6 +121,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
     );
   }
 
+  /**
+   * Sets meal id.
+   *
+   * @param id the id
+   */
   public void setMealId(long id) {
     meal.setValue(mealMap.get(id));
   }
@@ -122,9 +137,18 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
         .addOnFailureListener(throwable::postValue);
   }
 
+  /**
+   * The interface Authenticated task.
+   */
   @FunctionalInterface
   public interface AuthenticatedTask {
 
+    /**
+     * Execute disposable.
+     *
+     * @param account the account
+     * @return the disposable
+     */
     Disposable execute(GoogleSignInAccount account);
   }
 

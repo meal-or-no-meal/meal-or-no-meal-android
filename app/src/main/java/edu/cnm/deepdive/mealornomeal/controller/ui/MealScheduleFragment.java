@@ -1,3 +1,22 @@
+/*
+ * <!--
+ *   Copyright 2020 Meal or no Meal
+ *  Paul Cutter, Mickie Morlang, Ambar Rodriguez, Levi Sanchez
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0>
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ * -->
+ */
+
 package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.app.Dialog;
@@ -23,6 +42,9 @@ import java.time.LocalDate;
 import org.jetbrains.annotations.NotNull;
 
 
+/**
+ * The type Meal schedule fragment.
+ */
 public class MealScheduleFragment extends DialogFragment {
 
   private static final String MEAL_ID_KEY = "id";
@@ -35,6 +57,12 @@ public class MealScheduleFragment extends DialogFragment {
   private Spinner mealSlot;
 
 
+  /**
+   * New instance meal schedule fragment.
+   *
+   * @param id the id
+   * @return the meal schedule fragment
+   */
   public static MealScheduleFragment newInstance(long id) {
     MealScheduleFragment fragment = new MealScheduleFragment();
     Bundle args = new Bundle();
