@@ -36,7 +36,7 @@ public class MealRepository {
   }
 
   public Completable save(String idToken, Meal meal) {
-    if (meal.getId() == 0L) {
+    if (meal.getId() == null) {
       return Completable.fromSingle(
           backEndService.postMeal(getHeader(idToken), meal)
               .subscribeOn(Schedulers.from(networkPool))
@@ -50,7 +50,7 @@ public class MealRepository {
   }
 
   public Completable delete (Meal meal, String idToken) {
-    if (meal.getId() == 0) {
+    if (meal.getId() == null) {
       return Completable.fromAction(() -> {})
           .subscribeOn(Schedulers.io());
     } else {
