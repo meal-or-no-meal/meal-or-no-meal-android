@@ -31,31 +31,28 @@ public class MealRepository {
   }
 
   public Single<Meal> getMeal(String idToken, Long id) {
-    return backEndService.get(getHeader(idToken))
+    return backEndService.get(getHeader(idToken), id)
         .subscribeOn(Schedulers.from(networkPool));
   }
 
-  public Completable save(String idToken, Meal meal) {
+  public Single<Meal> save(String idToken, Meal meal) {
     if (meal.getId() == null) {
-      return Completable.fromSingle(
-          backEndService.postMeal(getHeader(idToken), meal)
-              .subscribeOn(Schedulers.from(networkPool))
-      );
+      return backEndService.postMeal(getHeader(idToken), meal)
+          .subscribeOn(Schedulers.from(networkPool));
     } else {
-      return Completable.fromSingle(
-          backEndService.putMeal(getHeader(idToken), meal, meal.getId())
-              .subscribeOn(Schedulers.from(networkPool))
-      );
+      return backEndService.putMeal(getHeader(idToken), meal, meal.getId())
+          .subscribeOn(Schedulers.from(networkPool));
     }
   }
 
-  public Completable delete (Meal meal, String idToken) {
+  public Completable delete(Meal meal, String idToken) {
     if (meal.getId() == null) {
-      return Completable.fromAction(() -> {})
+      return Completable.fromAction(() -> {
+      })
           .subscribeOn(Schedulers.io());
     } else {
       return backEndService.delete(getHeader(idToken), meal.getId())
-              .subscribeOn(Schedulers.from(networkPool));
+          .subscribeOn(Schedulers.from(networkPool));
     }
   }
 

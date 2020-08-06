@@ -1,7 +1,7 @@
 package edu.cnm.deepdive.mealornomeal.model;
 
+import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import java.time.LocalDate;
 
 public class Calendar {
@@ -48,9 +48,21 @@ public class Calendar {
   }
 
   public enum MealSlot {
-    BREAKFAST,
-    LUNCH,
-    DINNER
+    BREAKFAST("Breakfast"),
+    LUNCH("Lunch"),
+    DINNER("Dinner");
+
+    private final String display;
+
+    MealSlot(String display) {
+      this.display = display;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+      return display;
+    }
   }
 
 }

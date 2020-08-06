@@ -50,14 +50,13 @@ private CreatedMealsViewModel createdMealsViewModel;
 
   private void editMeal(Long id) {
     MealsToDetails action = CreatedMealsFragmentDirections.mealsToDetails();
-    action.setMealId(id);
+    action.setMealId((id != null) ? id.longValue() : 0);
     Navigation.findNavController(getView()).navigate(action);
  }
 
   private void scheduleMeal(Long id) {
-//    EditMeal action = CreatedMealsFragmentDirections.editMeal();
-//    action.setMealId(id);
-//    Navigation.findNavController(getView()).navigate(action);
+    MealScheduleFragment fragment = MealScheduleFragment.newInstance(id);
+    fragment.show(getChildFragmentManager(), fragment.getClass().getName());
   }
 
 

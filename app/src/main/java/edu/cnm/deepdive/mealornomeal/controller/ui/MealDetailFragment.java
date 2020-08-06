@@ -14,7 +14,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
-import edu.cnm.deepdive.mealornomeal.viewmodel.MealDetailViewModel;
+import edu.cnm.deepdive.mealornomeal.viewmodel.CreatedMealsViewModel;
 
 public class MealDetailFragment extends Fragment {
 
@@ -25,9 +25,9 @@ private static final String ID_KEY = "meal_id";
   private EditText ingredients;
   private EditText recipe;
   private EditText requirements;
-  private Long mealId;
+  private long mealId;
   private Meal meal;
-  private MealDetailViewModel mealDetailViewModel;
+  private CreatedMealsViewModel mealsViewModel;
 
 
   @Override
@@ -60,7 +60,7 @@ private static final String ID_KEY = "meal_id";
 //    meal.setIngredients(ingredients.getText().toString().trim());
     meal.setRequirements(requirements.getText().toString().trim());
     meal.setInstruction(recipe.getText().toString().trim());
-    mealDetailViewModel.saveMeal(meal);
+    mealsViewModel.saveMeal(meal);
   }
 
 
@@ -68,10 +68,10 @@ private static final String ID_KEY = "meal_id";
   public void onViewCreated(@NonNull View view,
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mealDetailViewModel = new ViewModelProvider(getActivity()).get(MealDetailViewModel.class);
-    if (mealId != null) {
+    mealsViewModel = new ViewModelProvider(getActivity()).get(CreatedMealsViewModel.class);
+    if (mealId != 0) {
 
-      mealDetailViewModel.getMeal().observe(getViewLifecycleOwner(), (meal) -> {
+      mealsViewModel.getMeal().observe(getViewLifecycleOwner(), (meal) -> {
         this.meal = meal;
         mealName.setText(meal.getName());
         prepTime.setText(String.valueOf(meal.getPrepTime()));
@@ -79,7 +79,7 @@ private static final String ID_KEY = "meal_id";
         recipe.setText(meal.getInstruction());
         requirements.setText(meal.getRequirements());
       });
-      mealDetailViewModel.setMealId(mealId);
+      mealsViewModel.setMealId(mealId);
     } else {
       meal = new Meal();
     }

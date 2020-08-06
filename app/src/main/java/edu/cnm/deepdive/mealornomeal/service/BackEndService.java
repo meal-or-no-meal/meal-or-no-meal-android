@@ -3,10 +3,13 @@ package edu.cnm.deepdive.mealornomeal.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.mealornomeal.BuildConfig;
+import edu.cnm.deepdive.mealornomeal.model.Calendar;
 import edu.cnm.deepdive.mealornomeal.model.Ingredient;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
+import edu.cnm.deepdive.mealornomeal.view.LocalDateSerializer;
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import java.time.LocalDate;
 import java.util.List;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -28,7 +31,7 @@ public interface BackEndService {
   Single<List<Meal>> getAllMeals(@Header("Authorization") String authHeader);
 
   @GET("meals/{id}")
-  Single<Meal> get(@Header("Authorization") String authHeader);
+  Single<Meal> get(@Header("Authorization") String authHeader, @Path("id") Long id);
 
   @POST("meals")
   Single<Meal> postMeal(@Header("Authorization") String authHeader, @Body Meal meal);
@@ -40,7 +43,7 @@ public interface BackEndService {
   Completable delete(@Header("Authorization") String authHeader, @Path("id") Long id);
 
   @GET("ingredients/{id}")
-  Single<Ingredient> getIngredient(@Header("Authorization") String authHeader);
+  Single<Ingredient> getIngredient(@Header("Authorization") String authHeader, @Path("id") long id);
 
   @GET("ingredients")
   Single<List<Ingredient>> getAllIngredients(@Header("Authorization") String authHeader);
@@ -48,7 +51,18 @@ public interface BackEndService {
   @POST("ingredients")
   Single<Ingredient> postIngredient(@Header("Authorization") String authHeader, @Body Ingredient ingredient);
 
-  //TODO Add methods for Calendar
+  @GET("calendars")
+  Single<List<Calendar>> getCalendars(@Header("Authorization") String authHeader);
+
+  @GET("calendars/{id}")
+  Single<Calendar> getCalendar(@Header("Authorization") String authHeader, @Path("id") long id);
+
+  @POST("calendars")
+  Single<Calendar> postCalendar(@Header("Authorization") String authHeader, @Body Calendar calendar);
+
+  @DELETE("calendars/{id}")
+  Completable deleteCalendar(@Header("Authorization") String authHeader, @Path("id") long id);
+
 
 
 
@@ -64,6 +78,7 @@ public interface BackEndService {
     static {
       Gson gson = new GsonBuilder()
           .excludeFieldsWithoutExposeAnnotation()
+          .registerTypeAdapter(LocalDate.class, new LocalDateSerializer())
           .create();
       HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
       interceptor.setLevel(BuildConfig.DEBUG ? Level.BODY : Level.NONE);
