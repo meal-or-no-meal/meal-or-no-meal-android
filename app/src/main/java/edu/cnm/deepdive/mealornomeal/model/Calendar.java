@@ -24,7 +24,7 @@ import com.google.gson.annotations.Expose;
 import java.time.LocalDate;
 
 /**
- * The type Calendar.
+ * This Calendar class provides the elements to be able to retrive and send data.
  */
 public class Calendar {
 

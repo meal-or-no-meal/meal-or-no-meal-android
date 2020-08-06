@@ -76,7 +76,7 @@ public class CalendarViewModel extends AndroidViewModel {
   }
 
   /**
-   * Load calendars.
+   * Loads current calendars.
    */
   public void loadCalendars() {
     refreshAndExecute((account) -> calendarRepository.get(account.getIdToken())
@@ -88,7 +88,7 @@ public class CalendarViewModel extends AndroidViewModel {
   }
 
   /**
-   * Save.
+   * Saves a calendar that's been created.
    *
    * @param calendar the calendar
    */
@@ -107,7 +107,7 @@ public class CalendarViewModel extends AndroidViewModel {
   }
 
   /**
-   * Delete.
+   * Deletes a current calendar.
    *
    * @param calendar the calendar
    */
@@ -125,6 +125,11 @@ public class CalendarViewModel extends AndroidViewModel {
         )
     );
   }
+
+  /**
+   * Refreshes created meals.
+   * @param task
+   */
 
   private void refreshAndExecute(CreatedMealsViewModel.AuthenticatedTask task) {
     throwable.setValue(null);
