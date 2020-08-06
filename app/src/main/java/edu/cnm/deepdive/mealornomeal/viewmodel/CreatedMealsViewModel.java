@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * The type Created meals view model.
+ */
 public class CreatedMealsViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final MutableLiveData<Meal> meal;
@@ -29,6 +32,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
 
   //TODO Determine if backendservice is needed
 
+  /**
+   * Instantiates a new Created meals view model.
+   *
+   * @param application the application
+   */
   public CreatedMealsViewModel(@NonNull Application application) {
     super(application);
     meal = new MutableLiveData<Meal>();
@@ -42,14 +50,27 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
   }
 
 
+  /**
+   * Gets meals.
+   *
+   * @return the meals
+   */
   public LiveData<List<Meal>> getMeals() {
     return meals;
   }
 
+  /**
+   * Gets meal.
+   *
+   * @return the meal
+   */
   public LiveData<Meal> getMeal() {
     return meal;
   }
 
+  /**
+   * Refresh meals.
+   */
   public void refreshMeals() {
     refreshAndExecute((account) ->  mealRepository.getAllMeals(account.getIdToken())
         .subscribe(
@@ -64,6 +85,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
     );
   }
 
+  /**
+   * Save meal.
+   *
+   * @param meal the meal
+   */
   public void saveMeal(Meal meal) {
     refreshAndExecute((account) -> mealRepository.save(account.getIdToken(), meal)
         .subscribe(
@@ -78,6 +104,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
     );
   }
 
+  /**
+   * Delete meal.
+   *
+   * @param meal the meal
+   */
   public void deleteMeal(Meal meal) {
     refreshAndExecute((account) -> mealRepository.delete(meal, account.getIdToken())
         .subscribe(
@@ -90,6 +121,11 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
     );
   }
 
+  /**
+   * Sets meal id.
+   *
+   * @param id the id
+   */
   public void setMealId(long id) {
     meal.setValue(mealMap.get(id));
   }
@@ -101,9 +137,18 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
         .addOnFailureListener(throwable::postValue);
   }
 
+  /**
+   * The interface Authenticated task.
+   */
   @FunctionalInterface
   public interface AuthenticatedTask {
 
+    /**
+     * Execute disposable.
+     *
+     * @param account the account
+     * @return the disposable
+     */
     Disposable execute(GoogleSignInAccount account);
   }
 

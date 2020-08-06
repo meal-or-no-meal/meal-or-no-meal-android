@@ -1,3 +1,22 @@
+/*
+ * <!--
+ *   Copyright 2020 Meal or no Meal
+ *  Paul Cutter, Mickie Morlang, Ambar Rodriguez, Levi Sanchez
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0>
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ * -->
+ */
+
 package edu.cnm.deepdive.mealornomeal.controller.ui;
 
 import android.widget.EditText;
@@ -16,6 +35,11 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import edu.cnm.deepdive.mealornomeal.viewmodel.CreatedMealsViewModel;
 
+/**
+ * The MealDetailFragment is a detailed view at the elements of a single Meal.
+ * Here the User can edit the Meal Name, Ingredients, Prep Time, Recipe, and Requirements of a meal.
+ * This is also where the User is taken to create a new meal.
+ */
 public class MealDetailFragment extends Fragment {
 
 private static final String ID_KEY = "meal_id";

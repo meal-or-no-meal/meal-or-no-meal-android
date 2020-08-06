@@ -1,3 +1,22 @@
+/*
+ * <!--
+ *   Copyright 2020 Meal or no Meal
+ *  Paul Cutter, Mickie Morlang, Ambar Rodriguez, Levi Sanchez
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0>
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ * -->
+ */
+
 package edu.cnm.deepdive.mealornomeal.controller;
 
 
@@ -9,6 +28,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 
+/**
+ * This Login activity monitors the activity and executes the required code to have a successful sign in.
+ */
 public class LoginActivity extends AppCompatActivity {
 
   private static final int LOGIN_REQUEST_CODE = 1000;
@@ -26,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
           findViewById(R.id.sign_in).setOnClickListener((v) ->
               service.startSignIn(this, LOGIN_REQUEST_CODE));
         });
-
   }
 
   @Override
@@ -41,6 +62,9 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
+  /**
+   * Switches to main activity.
+   */
   private void switchToMain() {
     Intent intent = new Intent(this, MainActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

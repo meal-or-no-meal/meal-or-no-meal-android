@@ -1,3 +1,22 @@
+/*
+ * <!--
+ *   Copyright 2020 Meal or no Meal
+ *  Paul Cutter, Mickie Morlang, Ambar Rodriguez, Levi Sanchez
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0>
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ * -->
+ */
+
 package edu.cnm.deepdive.mealornomeal.controller;
 
 import android.content.Intent;
@@ -15,6 +34,10 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 
 
+/**
+ * This Main activity is displaying the navigation and all of the preloaded
+ * data that displays apon installment of the app..
+ */
 public class MainActivity extends AppCompatActivity {
 
   private GoogleSignInService signInService;
@@ -50,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     return handled;
   }
 
+  /**
+   * Navigation for bottom nav set up.
+   */
   private void setupNavigation() {
     BottomNavigationView navView = findViewById(R.id.nav_view);
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -59,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
     NavigationUI.setupActionBarWithNavController(this, navController, config);
     NavigationUI.setupWithNavController(navView, navController);
   }
+
+  /**
+   * observer for google sign in.
+   */
   private void setupObservers() {
     signInService = GoogleSignInService.getInstance();
     signInService.getAccount().observe(this, (account) -> {
@@ -68,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
+  /**
+   * switches to Login activity.
+   */
   private void switchToLogin() {
     Intent intent = new Intent(this, LoginActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

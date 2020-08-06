@@ -1,3 +1,22 @@
+/*
+ * <!--
+ *   Copyright 2020 Meal or no Meal
+ *  Paul Cutter, Mickie Morlang, Ambar Rodriguez, Levi Sanchez
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0>
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ * -->
+ */
+
 package edu.cnm.deepdive.mealornomeal.view;
 
 import android.content.Context;
@@ -11,6 +30,9 @@ import edu.cnm.deepdive.mealornomeal.R;
 import edu.cnm.deepdive.mealornomeal.model.Meal;
 import java.util.List;
 
+/**
+ * The type Meal detail adapter.
+ */
 public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Holder> {
 
   private final String unnamedMeal;
@@ -18,6 +40,13 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
   private final List<Meal> meals;
   private final OnClickListener clickListener;
 
+  /**
+   * Instantiates a new Meal detail adapter.
+   *
+   * @param meals         the meals
+   * @param context       the context
+   * @param clickListener the click listener
+   */
   public MealDetailAdapter(List<Meal> meals, Context context,
       OnClickListener clickListener) {
     super ();
@@ -48,6 +77,9 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
   }
 
 
+  /**
+   * The type Holder.
+   */
   public class Holder extends RecyclerView.ViewHolder {
 
     private final View mealDetailView;
@@ -57,6 +89,11 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
     private final EditText recipe;
     private final EditText equipment;
 
+    /**
+     * Instantiates a new Holder.
+     *
+     * @param mealDetailView the meal detail view
+     */
     public Holder(@NonNull View mealDetailView) {
       super(mealDetailView);
       this.mealDetailView = mealDetailView;
@@ -67,6 +104,10 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
       equipment = mealDetailView.findViewById(R.id.equipment_needed);
     }
 
+    /**
+     * binds elements together.
+     * @param position
+     */
     private void bind(int position) {
       Meal meal = MealDetailAdapter.this.meals.get(position);
       String name =
@@ -82,7 +123,18 @@ public class MealDetailAdapter extends RecyclerView.Adapter<MealDetailAdapter.Ho
 
   }
 
+  /**
+   * The interface On click listener.
+   */
   public interface OnClickListener {
+
+    /**
+     * On click.
+     *
+     * @param v        the v
+     * @param position the position
+     * @param meal     the meal
+     */
     void OnClick(View v, int position, Meal meal);
   }
 
