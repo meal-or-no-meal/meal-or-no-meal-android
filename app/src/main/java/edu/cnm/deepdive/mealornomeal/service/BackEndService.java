@@ -43,6 +43,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * The interface Back end service.
@@ -136,6 +137,12 @@ public interface BackEndService {
    */
   @GET("calendars")
   Single<List<Calendar>> getCalendars(@Header("Authorization") String authHeader);
+
+  @GET("calendars/search")
+  Single<List<Calendar>> getCalendarsForDay(@Header("Authorization") String authHeader, @Query("date") LocalDate date);
+
+  @GET("calendars/search")
+  Single<List<Calendar>> getCalendarsForDateRange(@Header("Authorization") String authHeader, @Query("from") LocalDate from, @Query("to") LocalDate to);
 
   /**
    * Gets calendar.

@@ -12,10 +12,11 @@ import edu.cnm.deepdive.mealornomeal.service.GoogleSignInService;
 import edu.cnm.deepdive.mealornomeal.viewmodel.CreatedMealsViewModel.AuthenticatedTask;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.jetbrains.annotations.NotNull;
+
 
 /**
  * The type Calendar view model.
@@ -84,6 +85,15 @@ public class CalendarViewModel extends AndroidViewModel {
             calendars::postValue,
             throwable::postValue
         )
+    );
+  }
+
+  public void setCalendarDate(LocalDate date) {
+    refreshAndExecute((account) -> calendarRepository.get(account.getIdToken(), date)
+      .subscribe(
+          calendars::postValue,
+          throwable::postValue
+      )
     );
   }
 

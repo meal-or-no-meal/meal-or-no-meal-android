@@ -41,7 +41,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
   private final List<Meal> meals;
   private final OnEditListener onEditListener;
   private final OnDeleteListener onDeleteListener;
-  private final OnScheduleListener onScheduleListener; //TODO implement scheduling functionality
+  private final OnScheduleListener onScheduleListener;
 
   /**
    * Instantiates a new Created meals adapter.
@@ -60,7 +60,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
     this.meals = meals;
     this.onEditListener = onEditListener;
     this.onDeleteListener = onDeleteListener;
-    this.onScheduleListener = onScheduleListener; //TODO implement scheduling functionality
+    this.onScheduleListener = onScheduleListener;
     unnamedMeal = "Mystery Meal";
   }
 
@@ -87,7 +87,6 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
    */
   class Holder extends RecyclerView.ViewHolder {
 
-    private final View createdMealsView;
     private final TextView mealName;
     private final TextView prepTime;
     private final View edit;
@@ -102,7 +101,6 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
      */
     public Holder(@NonNull View createdMealsView) {
       super(createdMealsView);
-      this.createdMealsView = createdMealsView;
       mealName = createdMealsView.findViewById(R.id.edit_name);
       prepTime = createdMealsView.findViewById(R.id.prep_time);
       edit = createdMealsView.findViewById(R.id.edit);
@@ -122,7 +120,7 @@ public class CreatedMealsAdapter extends RecyclerView.Adapter<Holder> {
       prepTime.setText(meal.getPrepTime().toString());
       edit.setOnClickListener((v) -> onEditListener.onEdit(meal));
       delete.setOnClickListener((v) -> onDeleteListener.onDelete(meal));
-      scheduleMeal.setOnClickListener((v) -> onScheduleListener.onSchedule(meal)); //TODO implement scheduling functionality
+      scheduleMeal.setOnClickListener((v) -> onScheduleListener.onSchedule(meal));
     }
 
   }

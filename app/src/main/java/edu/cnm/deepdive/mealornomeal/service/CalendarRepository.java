@@ -25,6 +25,7 @@ import edu.cnm.deepdive.mealornomeal.model.Calendar;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -61,6 +62,16 @@ public class CalendarRepository {
    */
   public Single<List<Calendar>> get(String idToken) {
     return backEndService.getCalendars(getHeader(idToken))
+        .subscribeOn(Schedulers.from(networkPool));
+  }
+
+  public Single<List<Calendar>> get(String idToken, LocalDate date) {
+    return backEndService.getCalendarsForDay(getHeader(idToken), date)
+        .subscribeOn(Schedulers.from(networkPool));
+  }
+
+  public Single<List<Calendar>> get(String idToken, LocalDate from, LocalDate to) {
+    return backEndService.getCalendarsForDateRange(getHeader(idToken), from, to)
         .subscribeOn(Schedulers.from(networkPool));
   }
 

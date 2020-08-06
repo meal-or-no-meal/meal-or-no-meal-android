@@ -43,7 +43,7 @@ public class LocalDateSerializer
   @Override
   public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
       throws JsonParseException {
-    return (LocalDate) dateFormat.parse(json.getAsString());
+    return dateFormat.parse(json.getAsString(), LocalDate::from);
   }
 
   @Override

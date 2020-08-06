@@ -30,7 +30,6 @@ public class CreatedMealsViewModel extends AndroidViewModel implements Lifecycle
   private final Map<Long, Meal> mealMap;
   private final GoogleSignInService signInService;
 
-  //TODO Determine if backendservice is needed
 
   /**
    * Instantiates a new Created meals view model.
