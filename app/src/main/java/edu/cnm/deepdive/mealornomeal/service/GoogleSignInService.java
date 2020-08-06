@@ -37,62 +37,31 @@ public class GoogleSignInService {
         .requestIdToken(BuildConfig.CLIENT_ID)
         .build();
     client = GoogleSignIn.getClient(context, options);
-  }
+  }m
 
-  /**
-   * Sets context.
-   *
-   * @param context the context
-   */
+
   public static void setContext(Application context) {
     GoogleSignInService.context = context;
   }
 
-  /**
-   * Gets instance.
-   *
-   * @return the instance
-   */
   public static GoogleSignInService getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
-  /**
-   * Gets account.
-   *
-   * @return the account
-   */
   public LiveData<GoogleSignInAccount> getAccount() {
     return account;
   }
 
-  /**
-   * Gets throwable.
-   *
-   * @return the throwable
-   */
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
-
-  /**
-   * Refresh task.
-   *
-   * @return the task
-   */
   public Task<GoogleSignInAccount> refresh() {
     return client.silentSignIn()
         .addOnSuccessListener(this::update)
         .addOnFailureListener(this::update);
   }
 
-  /**
-   * Start sign in.
-   *
-   * @param activity    the activity
-   * @param requestCode the request code
-   */
   public void startSignIn(Activity activity, int requestCode) {
     update((GoogleSignInAccount) null);
     Intent intent = client.getSignInIntent();
