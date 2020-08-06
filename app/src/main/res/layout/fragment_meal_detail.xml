@@ -9,7 +9,7 @@
   tools:context=".controller.ui.CreatedMealsFragment">
 
   <EditText
-    android:id="@+id/meal_name"
+    android:id="@+id/edit_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintTop_toTopOf="parent"
@@ -24,8 +24,8 @@
     android:id="@+id/prep_time_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="@id/meal_name"
-    app:layout_constraintTop_toBottomOf="@id/meal_name"
+    app:layout_constraintStart_toStartOf="@id/edit_name"
+    app:layout_constraintTop_toBottomOf="@id/edit_name"
     android:layout_marginTop="4dp"
     android:text="@string/prep_time"
     android:textSize="25sp"/>
@@ -46,7 +46,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/meal_name"
+    app:layout_constraintTop_toBottomOf="@id/edit_name"
     android:text="@string/save"
     android:textSize="20sp"/>
 

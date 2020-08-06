@@ -11,17 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.mealornomeal.R;
-import edu.cnm.deepdive.mealornomeal.viewmodel.MealDetailViewModel;
-
 
 /**
  * The type Calendar fragment.
  */
 public class CalendarFragment extends DialogFragment {
 
-  private MealDetailViewModel viewModel;
   private AlertDialog alertDialog;
 
   @Override
@@ -62,9 +58,6 @@ public class CalendarFragment extends DialogFragment {
   public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view,
       @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    viewModel = new ViewModelProvider(getActivity())
-        .get(MealDetailViewModel.class);
-
 
   }
 

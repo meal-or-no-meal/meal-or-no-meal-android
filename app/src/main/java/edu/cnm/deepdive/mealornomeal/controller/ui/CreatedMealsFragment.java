@@ -29,7 +29,7 @@ private CreatedMealsViewModel createdMealsViewModel;
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_created_meals, container, false);
     createdMealList = view.findViewById(R.id.created_meals_recycler_view);
-    view.findViewById(R.id.add_meal).setOnClickListener((v) -> editMeal(0L));
+    view.findViewById(R.id.add_meal).setOnClickListener((v) -> editMeal(null));
     return view; //TODO add other onclick listeners for delete and schedule
   }
 
@@ -46,20 +46,20 @@ private CreatedMealsViewModel createdMealsViewModel;
             (meal) -> scheduleMeal(meal.getId())));
       }
     });
+    createdMealsViewModel.refreshMeals();
   }
 
 
 
   private void editMeal(Long id) {
     MealsToDetails action = CreatedMealsFragmentDirections.mealsToDetails();
-    action.setMealId(id);
+    action.setMealId((id != null) ? id.longValue() : 0);
     Navigation.findNavController(getView()).navigate(action);
  }
 
   private void scheduleMeal(Long id) {
-//    EditMeal action = CreatedMealsFragmentDirections.editMeal();
-//    action.setMealId(id);
-//    Navigation.findNavController(getView()).navigate(action);
+    MealScheduleFragment fragment = MealScheduleFragment.newInstance(id);
+    fragment.show(getChildFragmentManager(), fragment.getClass().getName());
   }
 
 
